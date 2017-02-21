@@ -105,4 +105,4 @@ vendor/
 .idea/go-training.iml
 .idea/misc.xml
 .idea/modules.xml
-glide.yaml
+.idea
