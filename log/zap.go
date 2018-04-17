@@ -2,26 +2,62 @@ package log
 
 import (
 	"sync"
+	"fmt"
+	"errors"
 
 	"go.uber.org/zap"
 	"go.uber.org/zap/zapcore"
-	"fmt"
 )
 
-var singletonLogger *Logger
+type Level int8
 
-func GetLogger() *Logger{
-	return singletonLogger
+const (
+ 	Debug Level = iota
+ 	Info
+ 	Warn
+ 	Error
+ 	Dpanic
+ 	Panic
+ 	Fatal
+)
+
+func getZapLevel(level Level) (zapcore.Level, error) {
+	switch level {
+		case Debug:
+			return zapcore.DebugLevel, nil
+		case Info:
+			return zapcore.InfoLevel, nil
+		case Warn:
+			return zapcore.WarnLevel, nil
+		case Error:
+			return zapcore.ErrorLevel, nil
+		case Dpanic:
+			return zapcore.DPanicLevel, nil
+		case Panic:
+			return zapcore.PanicLevel, nil
+		case Fatal:
+			return zapcore.FatalLevel, nil
+		default:
+			// -2はzapのlevelに存在しない数値
+			return -2, errors.New(fmt.Sprintf("Failed match level. config level=%s", level))
+		}
 }
 
+type Logger struct {
+	logger *zap.Logger
+}
+
+var singletonLogger *Logger
 var once sync.Once
 
-func New() {
+func New(level Level) {
 	once.Do(func() {
-		level := zap.NewAtomicLevel()
-		level.SetLevel(zapcore.DebugLevel)
+		zapLevel, _ := getZapLevel(level)
+
+		atomicLevel := zap.NewAtomicLevel()
+		atomicLevel.SetLevel(zapLevel)
 		zapConfig := zap.Config{
-			Level:    level,
+			Level:    atomicLevel,
 			Encoding: "json",
 			EncoderConfig: zapcore.EncoderConfig{
 				TimeKey:        "Time",
@@ -47,12 +83,8 @@ func New() {
 	})
 }
 
-type Logger struct {
-	logger *zap.Logger
-}
-
-func (l *Logger) Fatalf(format string, v ...interface{}) {
-	l.logger.Fatal(fmt.Sprintf("Fatal %s", v), zap.String("test","a"))
+func Fatalf(format string, v ...interface{}) {
+	singletonLogger.logger.Fatal(fmt.Sprintf("Fatal %s", v), zap.String("test","a"))
 }
 
 

@@ -4,9 +4,10 @@ import (
 	"testing"
 )
 
-func TestGetLogger(t *testing.T) {
-	New()
-	logger := GetLogger()
+func init() {
+	New(Info)
+}
 
-	logger.Fatalf("aaaaaa %s", "bbbb")
+func TestGetLogger(t *testing.T) {
+	Fatalf("aaaaaa %s", "bbbb")
 }
