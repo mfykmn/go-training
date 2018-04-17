@@ -9,5 +9,5 @@ func init() {
 }
 
 func TestGetLogger(t *testing.T) {
-	Fatalf("aaaaaa %s", "bbbb")
+	Fatalf("trace00000001", "Failed DB connection. errCode is %s. %s", "0001", "TIMEOUT")
 }

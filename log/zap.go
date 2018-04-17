@@ -83,8 +83,8 @@ func New(level Level) {
 	})
 }
 
-func Fatalf(format string, v ...interface{}) {
-	singletonLogger.logger.Fatal(fmt.Sprintf("Fatal %s", v), zap.String("test","a"))
+func Fatalf(traceID string, format string, v ...interface{}) {
+	singletonLogger.logger.Fatal(fmt.Sprintf(format, v...), zap.String("trace_id",traceID))
 }
 
 
