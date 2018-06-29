@@ -21,12 +21,12 @@ func main() {
 	w.Write([]byte{'c'})
 	w.Write([]byte{'d'})
 	fmt.Println("Buffered I/O")
-	bw := bufio.NewWriterSize(w, 3)
+	bw := bufio.NewWriterSize(w, 3) // 3byte超えたらFlush
 	bw.Write([]byte{'a'})
 	bw.Write([]byte{'b'})
 	bw.Write([]byte{'c'})
 	bw.Write([]byte{'d'})
-	err := bw.Flush()
+	err := bw.Flush() // 明示的に最後にFlushしてる
 	if err != nil {
 		panic(err)
 	}
