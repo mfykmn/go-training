@@ -1,8 +1,8 @@
-package main
+package lesson1
 
 import (
-	"fmt"
 	"bufio"
+	"fmt"
 )
 
 type Writer int
@@ -11,7 +11,6 @@ func (*Writer) Write(p []byte) (n int, err error) {
 	fmt.Println(len(p))
 	return len(p), nil
 }
-
 
 func main() {
 	fmt.Println("Unbuffered I/O")
