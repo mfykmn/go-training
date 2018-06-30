@@ -28,6 +28,8 @@ func main() {
 	bw.Write([]byte("cd"))
 	w2 := new(Writer2)
 	bw.Reset(w2)
+	fmt.Printf("%#v", bw)
+	bw.Flush()
 	bw.Write([]byte("ef"))
 	bw.Flush()
 }
