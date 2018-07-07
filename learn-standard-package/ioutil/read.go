@@ -10,20 +10,18 @@ import (
 func main() {
 	fmt.Println("--ReadAll--")
 	reader := strings.NewReader("Hello, world!\n")
-	buffer, err := ioutil.ReadAll(reader)
-	if err != nil {
-		fmt.Println(err.Error())
-	}
+	buffer, _ := ioutil.ReadAll(reader)
 	fmt.Println(string(buffer))
 
 	fmt.Println("--ReadFull--")
 	reader1 := strings.NewReader("Hello, world!\n")
 	buffer1 := make([]byte, 4)
-	size, err := io.ReadFull(reader1, buffer1)
-	if err != nil {
-		fmt.Println(err.Error())
-	}
+	size, _ := io.ReadFull(reader1, buffer1)
 	fmt.Println(string(buffer1))
 	fmt.Println(size)
+
+	size1, _ := io.ReadFull(reader1, buffer1)
+	fmt.Println(string(buffer1))
+	fmt.Println(size1)
 
 }
