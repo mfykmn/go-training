@@ -1,7 +1,7 @@
 package main
 
 import (
-	"github.com/golang/go/src/os"
+	"os"
 	"io"
 	"net/http"
 	"path"
