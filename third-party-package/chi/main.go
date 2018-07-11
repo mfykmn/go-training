@@ -10,9 +10,12 @@ import (
 // curl http://localhost:8080/
 func main() {
 	r := chi.NewRouter()
-	r.Use(middleware.RequestID)
+	// r.Use(middleware.RequestID) TODO
 	r.Get("/", func(w http.ResponseWriter, r *http.Request) {
-		w.Write([]byte("root."))
+		ctx := r.Context()
+		rqqID := middleware.GetReqID(ctx)
+
+		w.Write([]byte(`{"request_id":"`+rqqID+`"}`))
 	})
 	http.ListenAndServe(":8080", r)
 }
