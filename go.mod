@@ -1,7 +1,7 @@
 module github.com/mafuyuk/go-training
 
 require (
-	github.com/go-chi/chi v1.0.0
+	github.com/go-chi/chi v0.0.0-20171222161133-e83ac2304db3
 	github.com/gorilla/context v1.1.1
 	github.com/gorilla/handlers v1.3.0
 	github.com/gorilla/mux v1.6.2
@@ -15,5 +15,6 @@ require (
 	golang.org/x/crypto v0.0.0-20180621125126-a49355c7e3f8
 	golang.org/x/net v0.0.0-20180710231904-039a4258aec0
 	golang.org/x/sys v0.0.0-20180709060233-1b2967e3c290
-	golang.org/x/tour v0.0.0-20180709154455-984ce3905355
+	golang.org/x/text v0.3.0
+	golang.org/x/tour v0.0.0-20180711200808-8ddcbfcc471b
 )
