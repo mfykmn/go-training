@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>チャット</title>
+  <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript">
+    // 接続先URI
+    var uri = "ws://localhost:3000/socket";
+
+    var messages = $("#messages");
+
+    // メッセージ受信イベント
+    function onMessage(event) {
+      console.log("call onMessage");
+      messages.append($("<li>").text(event.data));
+    }
+
+    function onClose() {
+      alert("接続が終了しました");
+    }
+
+    $(function() {
+      var socket = null;
+      var msgBox =  $("#chatbox textarea");
+
+      $("#chatbox").submit(function() {
+        console.log("call submit");
+        console.log(msgBox.val());
+        if (!msgBox.val()) return false;
+        if (!socket) {
+          alert("エラー: WebSocket接続が行われていません。");
+          return false;
+        }
+        console.log("send");
+        socket.send(msgBox.val());
+        msgBox.val("");
+        return false;
+      });
+
+      if (!window["WebSocket"]) {
+        alert("エラー: WebSocketに対応していないブラウザです");
+      } else {
+        socket = new WebSocket(uri);
+        socket.onclose = onClose;
+        socket.onmessage = onMessage;
+      }
+    });
+  </script>
+</head>
+
+<body>
+  <ul id="messages"></ul>
+  WebSocketを使ったチャットアプリケーション
+  <form id="chatbox">
+    <textarea></textarea>
+    <input type="submit" value="送信" />
+  </form>
+</body>
+</html>
