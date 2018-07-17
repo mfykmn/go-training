@@ -5,6 +5,7 @@ require (
 	github.com/gorilla/context v1.1.1
 	github.com/gorilla/handlers v1.3.0
 	github.com/gorilla/mux v1.6.2
+	github.com/gorilla/websocket v1.2.0
 	github.com/julienschmidt/httprouter v0.0.0-20180411154501-adbc77eec0d9
 	github.com/mattn/go-isatty v0.0.3
 	github.com/pkg/errors v0.8.0
