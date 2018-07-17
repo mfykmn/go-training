@@ -95,7 +95,6 @@ func NewRoom() *room {
 }
 
 func (r *room) ServeHTTP(w http.ResponseWriter, req *http.Request) {
-	log.Println("aaaaaaaaaaaaaaaaa")
 	socket, err := upgrader.Upgrade(w, req, nil)
 	if err != nil {
 		log.Fatal("ServeHTTP:", err)
@@ -113,7 +112,13 @@ func (r *room) ServeHTTP(w http.ResponseWriter, req *http.Request) {
 }
 
 func main() {
-	room := NewRoom()
-	http.Handle("/socket", room)
-	http.ListenAndServe(":3000", nil)
+	r := NewRoom()
+	http.Handle("/room", r)
+
+	go r.run()
+
+	log.Println("start server")
+	if err := http.ListenAndServe(":3000", nil); err != nil {
+		log.Fatal("ListenAndServe:", err)
+	}
 }

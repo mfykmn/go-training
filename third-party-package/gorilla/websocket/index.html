@@ -2,26 +2,19 @@
 <html>
 <head>
   <title>チャット</title>
+  <style>
+    input { display: block; }
+    ul { list-style: none; }
+  </style>
   <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
   <script type="text/javascript">
     // 接続先URI
-    var uri = "ws://localhost:3000/socket";
-
-    var messages = $("#messages");
-
-    // メッセージ受信イベント
-    function onMessage(event) {
-      console.log("call onMessage");
-      messages.append($("<li>").text(event.data));
-    }
-
-    function onClose() {
-      alert("接続が終了しました");
-    }
+    var uri = "ws://localhost:3000/room";
 
     $(function() {
       var socket = null;
       var msgBox =  $("#chatbox textarea");
+      var messages = $("#messages");
 
       $("#chatbox").submit(function() {
         console.log("call submit");
@@ -41,8 +34,14 @@
         alert("エラー: WebSocketに対応していないブラウザです");
       } else {
         socket = new WebSocket(uri);
-        socket.onclose = onClose;
-        socket.onmessage = onMessage;
+        socket.onclose = function() {
+          alert("接続が終了しました");
+        };
+        socket.onmessage = function (event) {
+          console.log("call onMessage");
+          console.log("kamo" + event.data);
+          messages.append($("<li>").text(event.data));
+        };
       }
     });
   </script>
