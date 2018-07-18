@@ -1,8 +1,8 @@
 package main
 
 import (
-	"math/rand" // 疑似乱数を生成するパッケージ
 	"fmt"
+	"math/rand" // 疑似乱数を生成するパッケージ
 	"time"
 )
 
