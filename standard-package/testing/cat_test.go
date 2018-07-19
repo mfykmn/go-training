@@ -1,6 +1,9 @@
 package testing
 
-import "testing"
+import (
+	"testing"
+	"fmt"
+)
 
 func seed(n int) []string{
 	s := make([]string, 0, n)
@@ -36,3 +39,25 @@ func BenchmarkBuf10000(b *testing.B) { bench(b, 10000, buf) }
 //BenchmarkBuf100-4          1000000          1198 ns/op            2160 B/op                             4 allocs/op
 //BenchmarkCat10000-4            200       6383734 ns/op        53327792 B/op                         10000 allocs/op
 //BenchmarkBuf10000-4          10000        102985 ns/op          211424 B/op                            11 allocs/op
+
+
+// サブベンチマーク
+// Table Drivenなベンチマークを記述できる
+func BenchmarkConcatenate(b *testing.B) {
+	benchCase := []struct {
+		name string
+		n int
+		f func(...string) string
+	}{
+		{"Cat", 3, cat},
+		{"Buf", 3, buf},
+		{"Cat", 100, cat},
+		{"Buf", 100, buf},
+		{"Cat", 10000, cat},
+		{"Buf", 10000, buf},
+	}
+	for _, c := range benchCase {
+		b.Run(fmt.Sprintf("%s%d", c.name, c.n),
+			func(b *testing.B) { bench(b, c.n, c.f)})
+	}
+}
