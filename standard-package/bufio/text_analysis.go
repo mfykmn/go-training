@@ -7,7 +7,7 @@ import (
 )
 
 var source = `１行目
-２行目
+２行目 です
 ３行目`
 
 func main () {
@@ -29,6 +29,7 @@ func useBufioReader() {
 // 分割文字が削除されることに注意
 func useBufioScanner() {
 	scanner := bufio.NewScanner(strings.NewReader(source))
+	scanner.Split(bufio.ScanWords)
 	for scanner.Scan() {
 		fmt.Printf("%#v\n", scanner.Text())
 	}
