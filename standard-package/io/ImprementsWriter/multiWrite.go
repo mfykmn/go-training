@@ -5,6 +5,7 @@ import (
 	"encoding/json"
 	"compress/gzip"
 	"io"
+	"os"
 )
 
 func handler(w http.ResponseWriter, r *http.Request) {
@@ -15,15 +16,15 @@ func handler(w http.ResponseWriter, r *http.Request) {
 		"Hello":"World",
 	}
 
-	bytes, err := json.Marshal(source)
-	if err != nil {
-		return
-	}
+	compresser := gzip.NewWriter(w)
+	mulitiWriter := io.MultiWriter(compresser, os.Stdout)
 
-	writer := gzip.NewWriter()
-	writer.Flush()
+	encoder := json.NewEncoder(mulitiWriter)
+	encoder.SetIndent("", "  ")
+	encoder.Encode(source)
 
-	w.Write()
+	compresser.Flush()
+
 }
 
 func main() {
