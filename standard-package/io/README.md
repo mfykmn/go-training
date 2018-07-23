@@ -46,3 +46,9 @@ readCloser.Close()
 ```go
 var readWriter io.ReadWriter = bufio.NewReadWriter(reader, writer)
 ```
+
+# 必要な部分だけ切り出す
+* 先頭の16バイトしか読み込めないようにする
+```go
+r := io.LimitReader(reader, 16)
+```
