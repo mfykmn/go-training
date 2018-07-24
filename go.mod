@@ -3,6 +3,7 @@ module github.com/mafuyuk/go-training
 require (
 	github.com/dustin/go-humanize v0.0.0-20180713052910-9f541cc9db5d
 	github.com/go-chi/chi v0.0.0-20171222161133-e83ac2304db3
+	github.com/gomodule/redigo v0.0.0-20180314223443-9c11da706d9b
 	github.com/gorilla/context v1.1.1
 	github.com/gorilla/handlers v1.3.0
 	github.com/gorilla/mux v1.6.2
