@@ -10,22 +10,14 @@ type MessageRepository struct {
 	c *redis.PubSubConn
 }
 
-func NewMsg(client *Client) *MessageRepository {
+func NewMsg(conn redis.Conn) *MessageRepository {
 	return &MessageRepository{
-		&redis.PubSubConn{Conn: client.conn},
+		&redis.PubSubConn{Conn: conn},
 	}
 }
 
 func (r *MessageRepository) Sub(channel string) error {
 	return r.c.Subscribe(channel)
-}
-
-func (r *MessageRepository) Pub(channel, msg string) error {
-	err := r.c.Conn.Send("PUBLISH", channel, msg)
-	if err != nil {
-		return err
-	}
-	return r.c.Conn.Flush()
 }
 
 func (r *MessageRepository) Receive() {
@@ -39,8 +31,4 @@ func (r *MessageRepository) Receive() {
 			fmt.Printf("err: %v", v)
 		}
 	}
-}
-
-func (r *MessageRepository) Close() error {
-	return r.Close()
 }

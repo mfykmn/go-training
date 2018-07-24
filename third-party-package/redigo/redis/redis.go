@@ -1,23 +1,40 @@
 package redis
 
 import (
+	"time"
+
 	"github.com/gomodule/redigo/redis"
 )
 
-type Client struct {
-	conn redis.Conn
-}
+// redis ConnectionPooling
+func newPool(addr string) *redis.Pool {
+	return &redis.Pool{
 
-func New(addr string) (*Client, error) {
-	conn, err := redis.Dial("tcp", addr)
-	if err != nil {
-		return nil, err
+		MaxIdle: 3,
+		IdleTimeout: 240 * time.Second,
+
+		Dial: func() (redis.Conn, error) {
+			c, err := redis.Dial("tcp", addr)
+
+			if err != nil {
+				return nil, err
+			}
+			return c, err
+		},
+
+		TestOnBorrow: func(c redis.Conn, t time.Time) error {
+			_, err := c.Do("PING")
+			return err
+		},
 	}
-	return &Client{
-		conn: conn,
-	}, nil
 }
 
-func (c *Client) Close() error {
-	return c.conn.Close()
+type Client struct {
+	*redis.Pool
+}
+
+func New(addr string) *Client {
+	return &Client{
+		newPool(addr),
+	}
 }

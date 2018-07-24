@@ -9,24 +9,24 @@ import (
 )
 
 func main() {
-	var err error
-	client, err := redis.New("redis:6379")
-	if err != nil {
-		panic(err)
-	}
-	defer client.Close()
+	client := redis.New("redis:6379")
+	sconn := client.Pool.Get()
+	defer sconn.Close()
 
-	msgRepo := redis.NewMsg(client)
-	defer msgRepo.Close() // TODO タイミングが違う？
+	msgRepo := redis.NewMsg(sconn)
 	go msgRepo.Receive()
 
 	sh := sub{
 		msgRepo: msgRepo,
 	}
 
+	ph := pub{
+		client,
+	}
+
 	http.HandleFunc("/", handler)
 	http.HandleFunc("/sub", sh.subHandler)
-	http.HandleFunc("/pub", sh.pubHandler)
+	http.HandleFunc("/pub", ph.pubHandler)
 	log.Println("Start server")
 	http.ListenAndServe(":8080", nil)
 }
@@ -50,9 +50,16 @@ func (s *sub) subHandler(rw http.ResponseWriter, r *http.Request) {
 	rw.Write([]byte("exec subscription"))
 }
 
-func (s *sub) pubHandler(rw http.ResponseWriter, r *http.Request) {
+type pub struct {
+	*redis.Client
+}
+
+func (p *pub) pubHandler(rw http.ResponseWriter, r *http.Request) {
 	fmt.Println("call pubhandler")
-	if err := s.msgRepo.Pub(channel, "hello pubsub"); err != nil {
+	conn := p.Pool.Get()
+	defer conn.Close()
+
+	if err := conn.Send("PUBLISH", channel, "hello pubsub"); err != nil {
 		fmt.Println(err)
 		rw.Write([]byte("failed pubhandler"))
 		return
