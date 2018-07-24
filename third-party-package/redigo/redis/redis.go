@@ -8,7 +8,6 @@ type Client struct {
 	conn redis.Conn
 }
 
-// localhost:
 func New(addr string) (*Client, error) {
 	conn, err := redis.Dial("tcp", addr)
 	if err != nil {
