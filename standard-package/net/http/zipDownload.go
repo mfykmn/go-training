@@ -7,6 +7,7 @@ import (
 	"strings"
 )
 
+// Goならわかるシステムプログラミングの回答 Q3.5
 func main() {
 	http.HandleFunc("/", zipHandler)
 	http.ListenAndServe(":8080", nil)
