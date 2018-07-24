@@ -30,4 +30,10 @@ func main() {
 		panic(err)
 	}
 	io.Copy(b, strings.NewReader("2つめのファイルのテキストです"))
+
+	c, err := zipWriter.Create("c.txt")
+	if err != nil {
+		panic(err)
+	}
+	io.CopyN(c, strings.NewReader("3つめのファイルのテキストです"), 4) // 4だけ読み込む
 }
