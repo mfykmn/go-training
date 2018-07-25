@@ -1,15 +1,15 @@
 package main
 
 import (
+	"bytes"
 	"encoding/binary"
+	"hash/crc32"
 	"io"
 	"os"
-	"bytes"
-	"hash/crc32"
 )
 
 func textChunks(text string) io.Reader {
-	byteData :=[]byte(text)
+	byteData := []byte(text)
 	var buffer bytes.Buffer
 	binary.Write(&buffer, binary.BigEndian, int32(len(byteData)))
 	buffer.WriteString("tEXt")
@@ -30,13 +30,13 @@ func readChunks2(file *os.File) []io.Reader {
 	file.Seek(8, 0)
 	var offset int64 = 8
 	for {
-		var length int32 // 4バイト
+		var length int32                                    // 4バイト
 		err := binary.Read(file, binary.BigEndian, &length) // lengthの4バイト分読み込みつまりpngのチャンクサイズを取得
 		if err == io.EOF {
 			break
 		}
 		chunks = append(chunks,
-			io.NewSectionReader(file, offset, int64(length) + 12)) // チャンクサイズ(4バイト)+チャンクの種類(4バイト)+データのCRC-32(4バイト)
+			io.NewSectionReader(file, offset, int64(length)+12)) // チャンクサイズ(4バイト)+チャンクの種類(4バイト)+データのCRC-32(4バイト)
 		// 次のチャンクの先頭に移動
 		// 現在位置は長さを読み終わった箇所なので
 		// チャンク名(4バイト) + データ帳 +CRC(4バイト)先に移動

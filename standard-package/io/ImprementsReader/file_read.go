@@ -1,8 +1,8 @@
 package main
 
 import (
-	"os"
 	"io"
+	"os"
 )
 
 // go run file_read.go

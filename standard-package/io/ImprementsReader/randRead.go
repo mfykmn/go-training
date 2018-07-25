@@ -1,9 +1,9 @@
 package main
 
 import (
-	"os"
 	"crypto/rand"
 	"io"
+	"os"
 )
 
 // GoならわかるシステムプログラミングQ3.2の自分の回答

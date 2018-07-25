@@ -1,14 +1,14 @@
 package main
 
 import (
-	"strings"
 	"io"
 	"os"
+	"strings"
 )
 
 var (
-	computer = strings.NewReader("COMPUTER")
-	system = strings.NewReader("SYSTEM")
+	computer    = strings.NewReader("COMPUTER")
+	system      = strings.NewReader("SYSTEM")
 	programming = strings.NewReader("PROGRAMMING")
 )
 
@@ -23,7 +23,7 @@ func main() {
 	pr, pw := io.Pipe()
 	writer := io.MultiWriter(pw, pw)
 	go io.CopyN(writer, i, 1)
-	defer	pw.Close()
+	defer pw.Close()
 
 	stream = io.MultiReader(a, s, c, io.LimitReader(pr, 2))
 	io.Copy(os.Stdout, stream)

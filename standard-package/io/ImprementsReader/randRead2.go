@@ -1,9 +1,9 @@
 package main
 
 import (
-  "crypto/rand"
-  "io"
-  "os"
+	"crypto/rand"
+	"io"
+	"os"
 )
 
 func main() {
@@ -11,6 +11,6 @@ func main() {
 	if err != nil {
 		panic(err)
 	}
-  defer file.Close()
-  io.CopyN(file, rand.Reader, 1024)
+	defer file.Close()
+	io.CopyN(file, rand.Reader, 1024)
 }

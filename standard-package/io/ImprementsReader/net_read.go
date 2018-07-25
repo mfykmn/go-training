@@ -1,11 +1,11 @@
 package main
 
 import (
-	"net"
-	"net/http"
 	"bufio"
 	"fmt"
 	"io"
+	"net"
+	"net/http"
 	"os"
 )
 
