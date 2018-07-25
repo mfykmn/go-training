@@ -17,7 +17,9 @@ func main() {
 
 
 func read() (reader chan string, exit chan struct{}) {
+	// 値の受け渡し用のチャネル
 	reader = make(chan string, 10)
+	// 終了フラグを渡すチャネル
 	exit = make(chan struct{})
 	go func() {
 		for {
