@@ -12,6 +12,7 @@ require (
 	github.com/mattn/go-isatty v0.0.3
 	github.com/pkg/errors v0.8.0
 	github.com/pressly/chi v1.0.0
+	github.com/rs/xid v1.2.0
 	github.com/stretchr/testify v1.2.2
 	github.com/urfave/negroni v0.3.0
 	go.uber.org/zap v1.8.0
