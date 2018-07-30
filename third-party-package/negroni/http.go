@@ -5,20 +5,40 @@ import (
 	"net/http"
 
 	"github.com/urfave/negroni"
+	"github.com/gorilla/mux"
 )
 
 func main() {
-	mux := http.NewServeMux()
-	mux.HandleFunc("/", func(w http.ResponseWriter, req *http.Request) {
-		fmt.Fprintf(w, "Welcome to the home page!")
-	})
+	r := mux.NewRouter()
 
-	mux.HandleFunc("/2", func(w http.ResponseWriter, req *http.Request) {
-		fmt.Fprintf(w, "Welcome to the home page2!")
-	})
+	// Root への処理
+	r.HandleFunc("/", handler).Methods("GET")
 
-	n := negroni.Classic() // Includes some default middlewares
-	n.UseHandler(mux)
+	// アドミン周りの処理
+	authBase := mux.NewRouter()
+	r.PathPrefix("/admin/").Handler(negroni.New(
+		negroni.HandlerFunc(MyMiddleware),
+		negroni.Wrap(authBase)))
+	auth := authBase.PathPrefix("/admin").Subrouter()
+	auth.Path("/").HandlerFunc(adminHandler)
 
-	http.ListenAndServe(":3000", n)
+	// http://localhost:3000/admin/ リクエストを送るとdo middleware ⇒ called adminHandler という出力を得る
+
+
+	n := negroni.Classic()
+	n.UseHandler(r)
+	n.Run(":3000")
+}
+
+func handler(w http.ResponseWriter, r *http.Request) {
+	fmt.Println("called handler")
+}
+
+func adminHandler(w http.ResponseWriter, r *http.Request) {
+	fmt.Println("called adminHandler")
+}
+
+func MyMiddleware(rw http.ResponseWriter, r *http.Request, next http.HandlerFunc) {
+	fmt.Println("do middleware")
+	next(rw, r)
 }
