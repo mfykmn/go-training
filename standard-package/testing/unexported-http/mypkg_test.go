@@ -8,6 +8,7 @@ import (
 	"testing"
 
 	"github.com/mafuyuk/go-training/standard-package/testing/unexported-http"
+	"encoding/json"
 )
 
 func TestGet(t *testing.T) {
@@ -28,7 +29,13 @@ func TestGet(t *testing.T) {
 				if r.FormValue("n") != strconv.Itoa(tc.n) {
 					t.Errorf("param n want %s got %d", r.FormValue("n"), tc.n)
 				}
-				fmt.Fprint(w, `{"value":"hoge"}`)
+				resp := &unexported.ExportGetResponse{
+					Value: "hoge",
+				}
+				if err := json.NewEncoder(w).Encode(resp); err != nil {
+					t.Fatal("unexpected error:", err)
+				}
+				fmt.Fprint(w, resp)
 			}))
 			defer s.Close()
 			defer unexported.SetBaseURL(s.URL)() // baseURLをモックサーバのものに入れ替え

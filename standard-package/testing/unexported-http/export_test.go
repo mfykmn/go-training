@@ -7,3 +7,5 @@ func SetBaseURL(s string) (resetFunc func()) {
 		baseURL = tmp
 	}
 }
+
+type ExportGetResponse = getResponse
