@@ -1,13 +1,13 @@
 package testing
 
 import (
-	"testing"
 	"fmt"
+	"testing"
 )
 
-func seed(n int) []string{
+func seed(n int) []string {
 	s := make([]string, 0, n)
-	for i := 0;i < n; i++ {
+	for i := 0; i < n; i++ {
 		s = append(s, "a")
 	}
 	return s
@@ -15,15 +15,15 @@ func seed(n int) []string{
 
 func bench(b *testing.B, n int, f func(...string) string) {
 	b.ReportAllocs()
-	for i:=0; i< b.N; i++ {
+	for i := 0; i < b.N; i++ {
 		f(seed(n)...)
 	}
 }
 
-func BenchmarkCat3(b *testing.B) { bench(b, 3, cat) }
-func BenchmarkBuf3(b *testing.B) { bench(b, 3, buf) }
-func BenchmarkCat100(b *testing.B) { bench(b, 100, cat) }
-func BenchmarkBuf100(b *testing.B) { bench(b, 100, buf) }
+func BenchmarkCat3(b *testing.B)     { bench(b, 3, cat) }
+func BenchmarkBuf3(b *testing.B)     { bench(b, 3, buf) }
+func BenchmarkCat100(b *testing.B)   { bench(b, 100, cat) }
+func BenchmarkBuf100(b *testing.B)   { bench(b, 100, buf) }
 func BenchmarkCat10000(b *testing.B) { bench(b, 10000, cat) }
 func BenchmarkBuf10000(b *testing.B) { bench(b, 10000, buf) }
 
@@ -40,14 +40,13 @@ func BenchmarkBuf10000(b *testing.B) { bench(b, 10000, buf) }
 //BenchmarkCat10000-4            200       6383734 ns/op        53327792 B/op                         10000 allocs/op
 //BenchmarkBuf10000-4          10000        102985 ns/op          211424 B/op                            11 allocs/op
 
-
 // サブベンチマーク
 // Table Drivenなベンチマークを記述できる
 func BenchmarkConcatenate(b *testing.B) {
 	benchCase := []struct {
 		name string
-		n int
-		f func(...string) string
+		n    int
+		f    func(...string) string
 	}{
 		{"Cat", 3, cat},
 		{"Buf", 3, buf},
@@ -58,6 +57,6 @@ func BenchmarkConcatenate(b *testing.B) {
 	}
 	for _, c := range benchCase {
 		b.Run(fmt.Sprintf("%s%d", c.name, c.n),
-			func(b *testing.B) { bench(b, c.n, c.f)})
+			func(b *testing.B) { bench(b, c.n, c.f) })
 	}
 }

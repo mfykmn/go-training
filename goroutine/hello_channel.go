@@ -20,16 +20,15 @@ func main() {
 		tasks1 <- "hello"
 	}()
 
-
 	// データを受け取り
-	task1 := <- tasks1
+	task1 := <-tasks1
 	fmt.Println(task1)
 
 	// データを受け取り＆クローズ判定
-	if task2, ok := <- tasks1; ok { // チャネルがまだopenであればtrueが返る
+	if task2, ok := <-tasks1; ok { // チャネルがまだopenであればtrueが返る
 		fmt.Println(task2)
 	}
 
 	// データ読み捨て
-	<- tasks1
+	<-tasks1
 }

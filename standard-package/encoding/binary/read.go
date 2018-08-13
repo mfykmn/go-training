@@ -1,10 +1,10 @@
 package main
 
 import (
-	"log"
-	"encoding/binary"
 	"bytes"
+	"encoding/binary"
 	"fmt"
+	"log"
 )
 
 type Row struct {

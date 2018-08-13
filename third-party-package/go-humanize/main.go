@@ -1,8 +1,8 @@
 package main
 
 import (
-	"os"
 	"fmt"
+	"os"
 
 	"github.com/dustin/go-humanize"
 )
@@ -16,7 +16,6 @@ func main() {
 		humanize.Bytes(uint64(s.Size())),
 	)
 
-
 	// パースデモ
 	const maxBandWidth = "10MB"
 	conf := &Conf{}
@@ -29,7 +28,7 @@ type Conf struct {
 	maxBandWidth uint64
 }
 
-func (c *Conf)Parse(maxBandWidth string) {
+func (c *Conf) Parse(maxBandWidth string) {
 	if bw, err := humanize.ParseBytes(maxBandWidth); err != nil {
 		fmt.Println("Can not parse -max-bandwidth", err)
 		os.Exit(1)

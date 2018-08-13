@@ -1,9 +1,9 @@
 package main
 
 import (
-	"time"
 	"context"
 	"fmt"
+	"time"
 )
 
 // https://tip.golang.org/pkg/context/#example_WithDeadline

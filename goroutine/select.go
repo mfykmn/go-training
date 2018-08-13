@@ -15,7 +15,6 @@ func main() {
 	exit <- struct{}{}
 }
 
-
 func read() (reader chan string, exit chan struct{}) {
 	// 値の受け渡し用のチャネル
 	reader = make(chan string, 10)

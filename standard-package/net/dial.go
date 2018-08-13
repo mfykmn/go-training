@@ -2,9 +2,9 @@
 package main
 
 import (
-  "io"
-  "os"
-  "net"
+	"io"
+	"net"
+	"os"
 )
 
 func main() {

@@ -1,10 +1,10 @@
 package main
 
 import (
-"net"
-"io"
-"os"
-"net/http"
+	"io"
+	"net"
+	"net/http"
+	"os"
 )
 
 func main() {

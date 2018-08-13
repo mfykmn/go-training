@@ -11,10 +11,11 @@ const (
 	accountSid = ""
 	authToken  = ""
 
-	from = "+819000000000" // 受信するtwilio側の電話番号
-	to   = "+819000000000" // 送信する電話番号
+	from = "+819000000000"                          // 受信するtwilio側の電話番号
+	to   = "+819000000000"                          // 送信する電話番号
 	url  = "https://handler.twilio.com/twiml/dummy" // twiml URL
 )
+
 func main() {
 	twilio := gotwilio.NewTwilioClient(accountSid, authToken)
 	callbackParams := gotwilio.NewCallbackParameters(url)

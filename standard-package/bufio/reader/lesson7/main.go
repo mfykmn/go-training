@@ -1,9 +1,9 @@
 package main
 
 import (
-	"strings"
 	"bufio"
 	"fmt"
+	"strings"
 )
 
 type R struct{}

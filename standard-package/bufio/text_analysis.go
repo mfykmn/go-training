@@ -2,15 +2,15 @@ package main
 
 import (
 	"bufio"
-	"strings"
 	"fmt"
+	"strings"
 )
 
 var source = `１行目
 ２行目 です
 ３行目`
 
-func main () {
+func main() {
 	useBufioReader()
 	useBufioScanner()
 }

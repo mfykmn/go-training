@@ -1,10 +1,10 @@
 package main
 
 import (
-	"os"
 	"archive/zip"
-	"strings"
 	"io"
+	"os"
+	"strings"
 )
 
 // Goならわかるシステムプログラミング Q3.3の回答
@@ -19,11 +19,11 @@ func main() {
 	defer zipWriter.Close()
 
 	// ファイルの数だけ書き込み
-  a, err := zipWriter.Create("a.txt")
-  if err != nil {
-  	panic(err)
-  }
-  io.Copy(a, strings.NewReader("1つめのファイルのテキストです"))
+	a, err := zipWriter.Create("a.txt")
+	if err != nil {
+		panic(err)
+	}
+	io.Copy(a, strings.NewReader("1つめのファイルのテキストです"))
 
 	b, err := zipWriter.Create("b.txt")
 	if err != nil {

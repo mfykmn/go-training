@@ -1,9 +1,9 @@
 package main
 
 import (
-	"io"
-	"fmt"
 	"bytes"
+	"fmt"
+	"io"
 	"time"
 )
 

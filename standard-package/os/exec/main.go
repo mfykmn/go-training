@@ -1,10 +1,9 @@
 package main
 
 import (
-	"os/exec"
 	"fmt"
+	"os/exec"
 )
-
 
 func main() {
 	if out, err := exec.Command("uname", "-s").Output(); err != nil {

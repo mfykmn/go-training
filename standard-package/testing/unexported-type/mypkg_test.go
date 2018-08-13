@@ -1,12 +1,11 @@
 package unexported_test // テスト対象とは別のパッケージ
 
 import (
-	"testing"
 	"encoding/json"
 	"log"
+	"testing"
 
 	"github.com/mafuyuk/go-training/standard-package/testing/unexported-type"
-
 )
 
 func TestClient(t *testing.T) {

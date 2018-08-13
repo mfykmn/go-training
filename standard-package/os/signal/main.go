@@ -1,12 +1,12 @@
 package main
 
 import (
-	"time"
+	"context"
 	"fmt"
 	"os"
-	"syscall"
 	"os/signal"
-	"context"
+	"syscall"
+	"time"
 )
 
 // しぐなるのしゅるい
@@ -52,7 +52,7 @@ func doMain(ctx context.Context) {
 	defer fmt.Println("done infinite loop")
 	for {
 		select {
-		case <- ctx.Done():
+		case <-ctx.Done():
 			fmt.Println("context done")
 			return
 		default:
@@ -61,5 +61,3 @@ func doMain(ctx context.Context) {
 		}
 	}
 }
-
-

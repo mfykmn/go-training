@@ -1,14 +1,14 @@
 package testing
 
 import (
-	"testing"
-	"os"
 	"log"
+	"os"
+	"testing"
 )
 
 func streamBench(b *testing.B, f func(*os.File)) {
 	b.ReportAllocs()
-	for i:=0; i< b.N; i++ {
+	for i := 0; i < b.N; i++ {
 		file, err := os.Open("./sample.gif")
 		if err != nil {
 			log.Println("Failed file open")
@@ -27,7 +27,7 @@ func streamBench(b *testing.B, f func(*os.File)) {
 func BenchmarkStream(b *testing.B) {
 	benchCase := []struct {
 		name string
-		f func(*os.File)
+		f    func(*os.File)
 	}{
 		{"MultiWriter", multiWriter},
 		{"Seek", seek},

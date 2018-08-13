@@ -1,9 +1,9 @@
 package main
 
 import (
-	"strings"
 	"bufio"
 	"fmt"
+	"strings"
 )
 
 func main() {
@@ -23,5 +23,3 @@ func main() {
 	}
 	fmt.Printf("%q\n", b)
 }
-
-

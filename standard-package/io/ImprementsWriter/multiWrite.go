@@ -1,10 +1,10 @@
 package main
 
 import (
-	"net/http"
-	"encoding/json"
 	"compress/gzip"
+	"encoding/json"
 	"io"
+	"net/http"
 	"os"
 )
 
@@ -13,7 +13,7 @@ func handler(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
 
 	source := map[string]string{
-		"Hello":"World",
+		"Hello": "World",
 	}
 
 	compresser := gzip.NewWriter(w)

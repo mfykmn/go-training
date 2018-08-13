@@ -1,8 +1,8 @@
 package main
 
 import (
-	"strings"
 	"fmt"
+	"strings"
 )
 
 var source2 = "123 1.234 1.0e4 test"

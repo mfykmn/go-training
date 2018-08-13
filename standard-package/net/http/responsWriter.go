@@ -1,11 +1,11 @@
 package main
 
 import (
-	"net/http"
 	"io"
+	"net/http"
 )
 
-func handler(w http.ResponseWriter, r * http.Request) {
+func handler(w http.ResponseWriter, r *http.Request) {
 	io.WriteString(w, "http.ResponsWriter sample")
 }
 

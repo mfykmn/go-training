@@ -6,6 +6,7 @@ import (
 )
 
 type R struct{}
+
 func (r *R) Read(p []byte) (n int, err error) {
 	fmt.Println("Read")
 	copy(p, "abcdefghijklmnop")

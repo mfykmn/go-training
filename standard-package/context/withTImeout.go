@@ -2,8 +2,8 @@ package main
 
 import (
 	"context"
-	"time"
 	"fmt"
+	"time"
 )
 
 // https://tip.golang.org/pkg/context/#example_WithTimeout
@@ -20,5 +20,3 @@ func main() {
 		fmt.Println(ctx.Err()) // prints "context deadline exceeded"
 	}
 }
-
-

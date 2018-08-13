@@ -4,6 +4,7 @@ import (
 	"bufio"
 	"fmt"
 )
+
 type R struct{}
 
 func (r *R) Read(p []byte) (n int, err error) {
@@ -19,7 +20,7 @@ func main() {
 	if err != nil {
 		panic(err)
 	}
-	fmt.Printf("%#v", )
+	fmt.Printf("%#v")
 	buf = make([]byte, 4)
 	n, err = br.Read(buf)
 	if err != nil {

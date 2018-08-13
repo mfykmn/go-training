@@ -1,8 +1,8 @@
 package main
 
 import (
-	"sync"
 	"fmt"
+	"sync"
 )
 
 var wg sync.WaitGroup
@@ -13,7 +13,6 @@ func main() {
 		wg.Add(1)
 		go fetchURL(queue)
 	}
-
 
 	queue <- "http://www.example.com"
 	queue <- "http://www.example.net"

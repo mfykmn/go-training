@@ -1,11 +1,11 @@
 package testing
 
 import (
-	"os"
+	"bytes"
 	"image"
 	"image/gif"
 	"io"
-	"bytes"
+	"os"
 )
 
 func multiWriter(in *os.File) {

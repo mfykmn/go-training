@@ -1,8 +1,8 @@
 package unexported_test // テスト対象とは別のパッケージ
 
 import (
-	"testing"
 	"log"
+	"testing"
 
 	"github.com/mafuyuk/go-training/standard-package/testing/unexported-method"
 )
@@ -12,7 +12,6 @@ func TestCounter(t *testing.T) {
 	c.Count()
 	c.Count()
 	c.Count()
-
 
 	unexported.ExportCounterReset(&c)
 

@@ -1,12 +1,12 @@
 package main
 
 import (
-	"net"
-	"fmt"
-	"net/http"
 	"bufio"
-	"net/http/httputil"
+	"fmt"
 	"io/ioutil"
+	"net"
+	"net/http"
+	"net/http/httputil"
 	"strings"
 )
 
@@ -39,7 +39,7 @@ func main() {
 				StatusCode: 200,
 				ProtoMajor: 1,
 				ProtoMinor: 0,
-				Body: ioutil.NopCloser(strings.NewReader("Hello World\n")),
+				Body:       ioutil.NopCloser(strings.NewReader("Hello World\n")),
 			}
 			response.Write(conn)
 			conn.Close()

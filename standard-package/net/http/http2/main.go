@@ -1,10 +1,10 @@
 package main
 
 import (
-	"path/filepath"
-	"net/http"
 	"fmt"
 	"log"
+	"net/http"
+	"path/filepath"
 )
 
 // ブラウザから https://localhost:8080/ にアクセス

@@ -1,14 +1,13 @@
 package main
 
 import (
-	"strings"
 	"encoding/csv"
-	"io"
 	"fmt"
+	"io"
+	"strings"
 )
 
-var csvSource =
-`1111,"ooooo","aaaaaa"
+var csvSource = `1111,"ooooo","aaaaaa"
 2222,"sssss","bbbbbb"
 3,"ddddddd","cccccc"
 `

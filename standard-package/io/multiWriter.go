@@ -1,11 +1,11 @@
 package main
 
 import (
-	"io/ioutil"
-	"os"
-	"io"
 	"crypto/sha256"
 	"fmt"
+	"io"
+	"io/ioutil"
+	"os"
 )
 
 // $ echo -n foo | go run multiWriter.go
@@ -35,8 +35,8 @@ func main() {
 	}
 
 	fmt.Printf("Wrote %d bytes to %s\nSHA256: %x\n",
-		written, // 書き込まれたバイト数
-		tmp.Name(), // テンポラリファイル名
+		written,       // 書き込まれたバイト数
+		tmp.Name(),    // テンポラリファイル名
 		hash.Sum(nil), // ハッシュ値
 	)
 }

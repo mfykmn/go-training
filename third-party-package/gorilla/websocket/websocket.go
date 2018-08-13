@@ -24,9 +24,9 @@ var upgrader = websocket.Upgrader{
 }
 
 type client struct {
-	socket *websocket.Conn   // WebSocketのコネクション
-	send   chan []byte       // メッセージをブラウザに送信するchannel
-	room   *room             // クライアントが属するチャットルーム
+	socket *websocket.Conn // WebSocketのコネクション
+	send   chan []byte     // メッセージをブラウザに送信するchannel
+	room   *room           // クライアントが属するチャットルーム
 }
 
 func (c *client) read() {

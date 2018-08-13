@@ -7,8 +7,8 @@ import (
 	"strconv"
 	"testing"
 
-	"github.com/mafuyuk/go-training/standard-package/testing/unexported-http"
 	"encoding/json"
+	"github.com/mafuyuk/go-training/standard-package/testing/unexported-http"
 )
 
 func TestGet(t *testing.T) {

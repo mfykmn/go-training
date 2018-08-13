@@ -1,9 +1,9 @@
 package main
 
 import (
-	"os"
 	"compress/gzip"
 	"io"
+	"os"
 )
 
 func main() {

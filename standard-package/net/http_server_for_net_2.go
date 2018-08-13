@@ -1,15 +1,15 @@
 package main
 
 import (
-	"net"
-	"fmt"
-	"net/http"
 	"bufio"
-	"net/http/httputil"
+	"fmt"
+	"io"
 	"io/ioutil"
+	"net"
+	"net/http"
+	"net/http/httputil"
 	"strings"
 	"time"
-	"io"
 )
 
 // 速度改善 HTTP/1.1のKeep-Aliveに対応させる
@@ -30,7 +30,7 @@ func main() {
 			fmt.Printf("Accept %v\n", conn.RemoteAddr())
 			// Accept後のソケットで何度も応答を返すためにループ
 			for {
-				conn.SetReadDeadline(time.Now().Add(5*time.Second))
+				conn.SetReadDeadline(time.Now().Add(5 * time.Second))
 				//リクエストを読み込む
 				request, err := http.ReadRequest(bufio.NewReader(conn))
 				if err != nil {
@@ -56,11 +56,11 @@ func main() {
 				// レスポンスを書き込む
 				// HTTP/1.1かつ、ContentLengthの設定が必要
 				response := http.Response{
-					StatusCode: 200,
-					ProtoMajor: 1,
-					ProtoMinor: 1,
-					ContentLength:int64(len(content)),
-					Body: ioutil.NopCloser(strings.NewReader(content)),
+					StatusCode:    200,
+					ProtoMajor:    1,
+					ProtoMinor:    1,
+					ContentLength: int64(len(content)),
+					Body:          ioutil.NopCloser(strings.NewReader(content)),
 				}
 				response.Write(conn)
 			}

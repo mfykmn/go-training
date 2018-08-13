@@ -4,8 +4,8 @@ import (
 	"fmt"
 	"net/http"
 
-	"github.com/urfave/negroni"
 	"github.com/gorilla/mux"
+	"github.com/urfave/negroni"
 )
 
 func main() {
@@ -23,7 +23,6 @@ func main() {
 	auth.Path("/").HandlerFunc(adminHandler)
 
 	// http://localhost:3000/admin/ リクエストを送るとdo middleware ⇒ called adminHandler という出力を得る
-
 
 	n := negroni.Classic()
 	n.UseHandler(r)

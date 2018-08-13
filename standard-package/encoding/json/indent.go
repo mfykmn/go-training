@@ -6,12 +6,12 @@ import (
 )
 
 type target struct {
-	Name string `json:"name"`
-	Threshold int `json:"threshold"`
+	Name      string `json:"name"`
+	Threshold int    `json:"threshold"`
 }
 
 type config struct {
-	Addr string `json:"addr"`
+	Addr   string `json:"addr"`
 	Target target `json:"target"`
 }
 
@@ -19,7 +19,7 @@ func main() {
 	cfg := config{
 		Addr: "Japan",
 		Target: target{
-			Name: "bar",
+			Name:      "bar",
 			Threshold: 4,
 		},
 	}

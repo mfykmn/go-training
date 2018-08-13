@@ -1,10 +1,10 @@
 package main
 
 import (
+	"fmt"
 	"os"
 	"os/signal"
 	"syscall"
-	"fmt"
 )
 
 func main() {

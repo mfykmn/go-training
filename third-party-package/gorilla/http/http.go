@@ -73,9 +73,9 @@ func route(_ *Server) http.Handler {
 	)).Subrouter()
 
 	// Rooting
-	v1.Path(usersPath).HandlerFunc(func (w http.ResponseWriter, r *http.Request) {
-	  w.WriteHeader(http.StatusOK)
-	  w.Write([]byte(`{"result":"ok"}`))
+	v1.Path(usersPath).HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		w.WriteHeader(http.StatusOK)
+		w.Write([]byte(`{"result":"ok"}`))
 	}).Methods(http.MethodGet)
 	return router
 }

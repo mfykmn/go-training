@@ -1,10 +1,10 @@
 package main
 
 import (
-	"io"
-	"strings"
-	"os"
 	"fmt"
+	"io"
+	"os"
+	"strings"
 )
 
 // Goならわかるシステムプログラミングの回答 Q3.5
