@@ -1,6 +1,6 @@
 # 自己証明書作成時に利用
-$ openssl genrsa 2048 > server.key
-$ openssl req -new -key server.key > server.csr
+$ openssl genrsa -out server.key 2048
+$ openssl req -new -key server.key -out server.csr
 $ openssl x509 -days 3650 -req -signkey server.key < server.csr > server.crt
 
 
