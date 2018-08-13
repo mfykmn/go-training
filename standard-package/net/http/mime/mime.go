@@ -7,7 +7,7 @@ import (
 	"net/http"
 	"os"
 	"path/filepath"
-)
+	)
 
 // http://localhost:8080/csv
 func csvhandler(w http.ResponseWriter, r *http.Request) {
@@ -21,11 +21,13 @@ func csvhandler(w http.ResponseWriter, r *http.Request) {
 		w.WriteHeader(http.StatusInternalServerError)
 		return
 	}
-	w.Header().Set("Content-Type", "text/csv")
-	w.Header().Set("Content-Disposition", "attachment;filename=\"download.csv\"")
 
 	buf := new(bytes.Buffer)
 	io.Copy(buf, file)
+
+	w.Header().Set("Content-Type", "text/csv")
+	w.Header().Set("Content-Disposition", "attachment;filename=\"download.csv\"")
+	w.WriteHeader(http.StatusOK)
 	w.Write(buf.Bytes())
 }
 
