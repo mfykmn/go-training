@@ -4,6 +4,8 @@ require (
 	github.com/dgrijalva/jwt-go v0.0.0-20180719211823-0b96aaa70776
 	github.com/dustin/go-humanize v0.0.0-20180713052910-9f541cc9db5d
 	github.com/go-chi/chi v0.0.0-20171222161133-e83ac2304db3
+	github.com/go-playground/locales v0.12.1
+	github.com/go-playground/universal-translator v0.16.0
 	github.com/gomodule/redigo v0.0.0-20180314223443-9c11da706d9b
 	github.com/gorilla/context v1.1.1
 	github.com/gorilla/handlers v1.3.0
@@ -24,4 +26,6 @@ require (
 	golang.org/x/sys v0.0.0-20180709060233-1b2967e3c290
 	golang.org/x/text v0.3.0
 	golang.org/x/tour v0.0.0-20180711200808-8ddcbfcc471b
+	gopkg.in/go-playground/assert.v1 v1.2.1
+	gopkg.in/go-playground/validator.v9 v9.21.0
 )
