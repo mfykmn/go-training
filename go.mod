@@ -3,6 +3,7 @@ module github.com/mafuyuk/go-training
 require (
 	github.com/dgrijalva/jwt-go v0.0.0-20180719211823-0b96aaa70776
 	github.com/dustin/go-humanize v0.0.0-20180713052910-9f541cc9db5d
+	github.com/eknkc/amber v0.0.0-20171010120322-cdade1c07385
 	github.com/go-chi/chi v0.0.0-20171222161133-e83ac2304db3
 	github.com/go-playground/locales v0.12.1
 	github.com/go-playground/universal-translator v0.16.0
@@ -19,6 +20,7 @@ require (
 	github.com/rs/xid v1.2.0
 	github.com/sfreiberg/gotwilio v0.0.0-20180612161623-8fb7259ba8bf
 	github.com/stretchr/testify v1.2.2
+	github.com/unrolled/render v0.0.0-20180807193321-4206df6ff701
 	github.com/urfave/negroni v0.3.0
 	go.uber.org/zap v1.8.0
 	golang.org/x/crypto v0.0.0-20180621125126-a49355c7e3f8
