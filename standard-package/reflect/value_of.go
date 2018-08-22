@@ -5,13 +5,13 @@ import (
 	"fmt"
 )
 
-type Point struct {
+type Points struct {
 	X int
 	Y int
 }
 
 func main() {
-	p := &Point{X: 10, Y: 15}
+	p := &Points{X: 10, Y: 15}
 	rv := reflect.ValueOf(p).Elem()
 
 	fmt.Printf("rv.Type = %v\n", rv.Type())
