@@ -20,7 +20,11 @@ func main() {
 		log.Fatal(err)
 	}
 
-	s := struct {}{}
+	s := struct {
+		string
+	}{
+		"aaaaaaa",
+	}
 	if _, err := marshall(s); err != nil {
 		log.Fatal(err)
 	}
@@ -47,6 +51,15 @@ func marshall(v interface{})([]byte, error) {
 	case reflect.Struct:
 		// struct用のコード
 		log.Println("is struct")
+	  rt := rv.Type()
+	  for i := 0; i < rt.NumField(); i++ {
+	  	ftv := rt.Field(i) // こっちはFiled
+			log.Println(ftv.Name)
+
+	  	fv := rv.Field(i) // こっちはValue
+			log.Println(fv.String())
+		}
+
 		return nil, nil
 	default:
 		return nil, errors.New("urlenc.Marshal: unsupported type (" + rv.Type().String() + ")")
