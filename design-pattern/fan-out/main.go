@@ -6,7 +6,7 @@ import (
 )
 
 // lean web db press 105
-
+// see: https://github.com/lestrrat-go/channels
 func main() {
 	src := make(chan interface{})
 	dst1 := make(chan interface{})

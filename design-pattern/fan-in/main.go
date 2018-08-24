@@ -5,6 +5,8 @@ import (
 	"fmt"
 )
 
+// lean web db press 105
+// see: https://github.com/lestrrat-go/channels
 func main() {
 	dst := make(chan interface{})
 	src1 := make(chan interface{})
