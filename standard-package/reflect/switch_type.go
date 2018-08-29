@@ -1,9 +1,9 @@
 package main
 
 import (
-	"reflect"
 	"errors"
 	"log"
+	"reflect"
 )
 
 type User struct {
@@ -12,7 +12,7 @@ type User struct {
 
 func main() {
 	m := map[string]string{
-		"0": "hello",
+		"0":   "hello",
 		"aaa": "world",
 		"bbb": "mafuyuk",
 	}
@@ -35,15 +35,14 @@ func main() {
 	}
 }
 
-
-func marshall(v interface{})([]byte, error) {
+func marshall(v interface{}) ([]byte, error) {
 	rv := reflect.ValueOf(v)
 	switch rv.Kind() {
 	case reflect.Map:
 		// map用のコード
 		log.Println("is map")
-	  for _, key := range rv.MapKeys() {
-	  	mv := rv.MapIndex(key)
+		for _, key := range rv.MapKeys() {
+			mv := rv.MapIndex(key)
 
 			log.Println(mv.String())
 		}
@@ -51,12 +50,12 @@ func marshall(v interface{})([]byte, error) {
 	case reflect.Struct:
 		// struct用のコード
 		log.Println("is struct")
-	  rt := rv.Type()
-	  for i := 0; i < rt.NumField(); i++ {
-	  	ftv := rt.Field(i) // こっちはFiled
+		rt := rv.Type()
+		for i := 0; i < rt.NumField(); i++ {
+			ftv := rt.Field(i) // こっちはFiled
 			log.Println(ftv.Name)
 
-	  	fv := rv.Field(i) // こっちはValue
+			fv := rv.Field(i) // こっちはValue
 			log.Println(fv.String())
 		}
 

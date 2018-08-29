@@ -1,8 +1,8 @@
 package main
 
 import (
-	"reflect"
 	"fmt"
+	"reflect"
 )
 
 // lean web db press 105
@@ -24,12 +24,12 @@ func main() {
 
 func fanout(src <-chan interface{}, dstChs []chan interface{}) {
 	for {
-		data := <- src
+		data := <-src
 		cases := make([]reflect.SelectCase, len(dstChs))
 		for i, ch := range dstChs {
 			cases[i] = reflect.SelectCase{
 				Chan: reflect.ValueOf(ch),
-				Dir: reflect.SelectSend,
+				Dir:  reflect.SelectSend,
 				Send: reflect.ValueOf(data),
 			}
 		}

@@ -1,13 +1,11 @@
 package main
 
 import (
-	"os"
 	"bufio"
 	"fmt"
+	"os"
 	"strconv"
 )
-
-
 
 type pokerHand int
 
@@ -18,7 +16,6 @@ const (
 	onePair                    // ある数をちょうど2つ含む
 	noHand                     // 役無し
 )
-
 
 func (ph pokerHand) String() string {
 	switch ph {
@@ -37,8 +34,6 @@ func (ph pokerHand) String() string {
 	}
 }
 
-
-
 func scanToSliceInt(in *os.File) ([]int, error) {
 	var scanner = bufio.NewScanner(in)
 	scanner.Split(bufio.ScanWords)
@@ -54,7 +49,6 @@ func scanToSliceInt(in *os.File) ([]int, error) {
 
 	return res, scanner.Err()
 }
-
 
 func main() {
 

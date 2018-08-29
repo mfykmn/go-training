@@ -1,8 +1,8 @@
 package main
 
 import (
-	"reflect"
 	"fmt"
+	"reflect"
 )
 
 type Points struct {

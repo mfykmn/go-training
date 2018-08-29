@@ -1,16 +1,17 @@
 package main
 
 import (
-	"reflect"
-	"log"
-	"strings"
 	"fmt"
+	"log"
+	"reflect"
+	"strings"
 )
 
 type Point struct {
 	X int `urlenc:"x,omitempty"`
 	Y int `urlenc:"y,omitempty"`
 }
+
 func main() {
 	res1 := parse(&Point{X: 10})
 	fmt.Println(res1)

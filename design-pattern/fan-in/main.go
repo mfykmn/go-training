@@ -1,8 +1,8 @@
 package main
 
 import (
-	"reflect"
 	"fmt"
+	"reflect"
 )
 
 // lean web db press 105
@@ -23,22 +23,20 @@ func main() {
 	src1 <- "src1: ddd"
 	src2 <- "src2: eee"
 
-
 }
-
 
 func fanin(srcs []chan interface{}, dst chan interface{}) func() {
 	cases := []reflect.SelectCase{}
 	for _, ch := range srcs {
 		cases = append(cases, reflect.SelectCase{
-			Dir: reflect.SelectRecv,
+			Dir:  reflect.SelectRecv,
 			Chan: reflect.ValueOf(ch),
 		})
 	}
 	return func() {
 		for {
 			_, recv, _ := reflect.Select(cases)
-			dst<-recv.Interface()
+			dst <- recv.Interface()
 		}
 	}
 }

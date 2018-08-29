@@ -7,6 +7,7 @@ require (
 	github.com/go-chi/chi v0.0.0-20171222161133-e83ac2304db3
 	github.com/go-playground/locales v0.12.1
 	github.com/go-playground/universal-translator v0.16.0
+	github.com/go-sql-driver/mysql v1.4.0
 	github.com/gomodule/redigo v0.0.0-20180314223443-9c11da706d9b
 	github.com/gorilla/context v1.1.1
 	github.com/gorilla/handlers v1.3.0
@@ -14,7 +15,11 @@ require (
 	github.com/gorilla/schema v0.0.0-20180614150749-e0e4b92809ac
 	github.com/gorilla/websocket v1.2.0
 	github.com/julienschmidt/httprouter v0.0.0-20180411154501-adbc77eec0d9
+	github.com/lann/builder v0.0.0-20180802200727-47ae307949d0
+	github.com/lann/ps v0.0.0-20150810152359-62de8c46ede0
+	github.com/lib/pq v1.0.0
 	github.com/mattn/go-isatty v0.0.3
+	github.com/mattn/go-sqlite3 v1.9.0
 	github.com/pkg/errors v0.8.0
 	github.com/pressly/chi v1.0.0
 	github.com/rs/xid v1.2.0
@@ -28,6 +33,8 @@ require (
 	golang.org/x/sys v0.0.0-20180709060233-1b2967e3c290
 	golang.org/x/text v0.3.0
 	golang.org/x/tour v0.0.0-20180711200808-8ddcbfcc471b
+	google.golang.org/appengine v1.1.0
+	gopkg.in/Masterminds/squirrel.v1 v1.0.0-20170825200431-a6b93000bd21
 	gopkg.in/go-playground/assert.v1 v1.2.1
 	gopkg.in/go-playground/validator.v9 v9.21.0
 )
