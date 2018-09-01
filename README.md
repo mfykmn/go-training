@@ -19,5 +19,3 @@ $ make setup
 
 * `goroutine`
 非同期処理の学習用
-
-test
