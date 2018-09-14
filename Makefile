@@ -1,16 +1,6 @@
-HAVE_VGO:=$(shell which vgo)
-
 ## Go
 .PHONY: setup
-setup: vgo
+setup:
 	@echo "Start setup"
-	@vgo mod -vendor
+	@env GO111MODULE=on go mod vendor
 	@go generate $(shell go list ./... | grep -v /vendor/)
-
-## Install package
-.PHONY: vgo
-vgo:
-ifndef HAVE_VGO
-	@echo "Installing vgo"
-	@go get -u golang.org/x/vgo
-endif
