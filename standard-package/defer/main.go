@@ -1,6 +1,6 @@
 package main
 
-import "github.com/mafuyuk/go-training/defer/queue"
+import "github.com/mafuyuk/go-training/standard-package/deferard-package/defer/queue"
 
 // learn web+db press vol.106
 func main() {
