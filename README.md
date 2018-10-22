@@ -1,4 +1,5 @@
 # Golang Training
+
 ## 📌 概要
 Golangの学習結果保存用リポジトリ
 
