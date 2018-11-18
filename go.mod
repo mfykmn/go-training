@@ -1,8 +1,9 @@
 module github.com/mafuyuk/go-training
 
 require (
+	github.com/auth0/go-jwt-middleware v0.0.0-20170425171159-5493cabe49f7
 	github.com/chzyer/readline v0.0.0-20180603132655-2972be24d48e // indirect
-	github.com/dgrijalva/jwt-go v0.0.0-20180719211823-0b96aaa70776 // indirect
+	github.com/dgrijalva/jwt-go v0.0.0-20180719211823-0b96aaa70776
 	github.com/dustin/go-humanize v0.0.0-20180713052910-9f541cc9db5d
 	github.com/eknkc/amber v0.0.0-20171010120322-cdade1c07385 // indirect
 	github.com/go-chi/chi v0.0.0-20171222161133-e83ac2304db3

@@ -6,7 +6,9 @@ import (
 )
 
 func main() {
-	http.HandleFunc("/", handler)
+	http.Handle("/", JwtMiddleware.Handler(http.HandlerFunc(handler)))
+	http.HandleFunc("/auth", GetTokenHandler)
+
 	log.Println("Start server")
 	http.ListenAndServe(":8080", nil)
 }

@@ -1,3 +1,5 @@
+github.com/auth0/go-jwt-middleware v0.0.0-20170425171159-5493cabe49f7 h1:irR1cO6eek3n5uquIVaRAsQmZnlsfPuHNz31cXo4eyk=
+github.com/auth0/go-jwt-middleware v0.0.0-20170425171159-5493cabe49f7/go.mod h1:LWMyo4iOLWXHGdBki7NIht1kHru/0wM179h+d3g8ATM=
 github.com/chzyer/readline v0.0.0-20180603132655-2972be24d48e h1:fY5BOSpyZCqRo5OhCuC+XN+r/bBCmeuuJtjz+bCNIf8=
 github.com/chzyer/readline v0.0.0-20180603132655-2972be24d48e/go.mod h1:nSuG5e5PlCu98SY8svDHJxuZscDgtXS6KTTbou5AhLI=
 github.com/dgrijalva/jwt-go v0.0.0-20180719211823-0b96aaa70776 h1:4k6eXmZsFXPj3IZRzDl3bmRspvt3nlemrKPnxg1hLso=
