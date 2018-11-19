@@ -10,13 +10,15 @@ require (
 	github.com/go-playground/locales v0.12.1 // indirect
 	github.com/go-playground/universal-translator v0.16.0 // indirect
 	github.com/go-sql-driver/mysql v1.4.0
-	github.com/golang/protobuf v1.2.0 // indirect
+	github.com/golang/protobuf v1.2.0
 	github.com/gomodule/redigo v0.0.0-20180314223443-9c11da706d9b
 	github.com/gorilla/context v1.1.1 // indirect
 	github.com/gorilla/handlers v1.3.0
 	github.com/gorilla/mux v1.6.2
 	github.com/gorilla/schema v0.0.0-20180614150749-e0e4b92809ac // indirect
 	github.com/gorilla/websocket v1.2.0
+	github.com/jinzhu/gorm v1.9.1
+	github.com/jinzhu/inflection v0.0.0-20180308033659-04140366298a // indirect
 	github.com/juju/ansiterm v0.0.0-20180109212912-720a0952cc2a // indirect
 	github.com/julienschmidt/httprouter v0.0.0-20180411154501-adbc77eec0d9
 	github.com/lann/builder v0.0.0-20180802200727-47ae307949d0 // indirect
