@@ -2,6 +2,10 @@ package domain
 
 import "errors"
 
+type Transporter interface {
+	Booking(cargo *Cargo) error
+}
+
 // Cargo 貨物を表す
 type Cargo struct {
 	size float32
@@ -25,7 +29,7 @@ func NewVoyage(capacity float32) *Voyage {
 	}
 }
 
-func (v Voyage) bookedCargoSize() float32 {
+func (v *Voyage) bookedCargoSize() float32 {
 	var size float32
 	for _, v := range v.cargoList {
 		size += v.size
@@ -33,12 +37,12 @@ func (v Voyage) bookedCargoSize() float32 {
 	return size
 }
 
-func MakeBooking(cargo *Cargo, voyage *Voyage) error {
-	maxBooking := voyage.capacity * 1.1
-	if (voyage.bookedCargoSize() + cargo.size) > maxBooking {
+func (v *Voyage) Booking(cargo *Cargo) error {
+	maxBooking := v.capacity * 1.1
+	if (v.bookedCargoSize() + cargo.size) > maxBooking {
 		return errors.New("Over max booking size")
 	}
 
-	voyage.cargoList = append(voyage.cargoList, cargo)
+	v.cargoList = append(v.cargoList, cargo)
 	return nil
 }

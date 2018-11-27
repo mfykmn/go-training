@@ -16,7 +16,7 @@ func main() {
 	}
 
 	for _, cargo := range cargoList {
-		if err := domain.MakeBooking(cargo, voyage); err != nil {
+		if err := voyage.Booking(cargo); err != nil {
 			fmt.Printf("failed err: %v\n", err)
 		} else {
 			fmt.Println("success")
