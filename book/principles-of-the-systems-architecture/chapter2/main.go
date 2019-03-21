@@ -10,4 +10,12 @@ func main() {
 
 	fmt.Println(fee.NewCharge(fee.AdultFee{}).Yen())
 	fmt.Println(fee.NewCharge(fee.ChildFee{}).Yen())
+
+	r := fee.NewReservation()
+	r.AddFee(fee.AdultFee{})
+	r.AddFee(fee.AdultFee{})
+	r.AddFee(fee.ChildFee{})
+
+	fmt.Println(r.FeeTotal())
+
 }
