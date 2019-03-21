@@ -54,7 +54,7 @@ func Factory(feeType feeType) Fee {
 	case Child:
 		return &ChildFee{}
 	case Senior:
-		return &ChildFee{}
+		return &SeniorFee{}
 	}
 	return nil
 }
