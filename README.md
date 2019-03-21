@@ -27,3 +27,5 @@ Golangの学習結果保存用リポジトリ
 ```bash
 $ make setup
 ```
+
+go get github.com/alvaroloes/enumer

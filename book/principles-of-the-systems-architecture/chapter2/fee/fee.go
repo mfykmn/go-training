@@ -1,5 +1,7 @@
 package fee
 
+import "errors"
+
 type Yen int
 
 type Fee interface {
@@ -25,4 +27,27 @@ func (_ ChildFee) fee() Yen {
 
 func (_ ChildFee) label() string {
 	return "子供"
+}
+
+//go:generate enumer -type=FeeType -transform=kebab
+type FeeType int
+
+const (
+	Adult FeeType = iota
+	Child
+)
+
+func Factory(feeType string) (Fee, error) {
+	target, err := FeeTypeString(feeType)
+	if err != nil {
+		return nil, err
+	}
+	switch target {
+	case Adult:
+		return &AdultFee{}, nil
+	case Child:
+		return &ChildFee{}, nil
+	default:
+		return nil, errors.New("unknown fee type")
+	}
 }
