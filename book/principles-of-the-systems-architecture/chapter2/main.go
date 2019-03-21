@@ -7,7 +7,6 @@ import (
 )
 
 func main() {
-
 	aFee := fee.Factory(fee.Adult)
 	sFee := fee.Factory(fee.Senior)
 	cFee := fee.Factory(fee.Child)
@@ -17,4 +16,8 @@ func main() {
 	r.AddFee(sFee)
 	r.AddFee(cFee)
 	fmt.Println(r.FeeTotal())
+
+	transitions := fee.NewStateTransitions()
+	fmt.Println(transitions.IsAllowed(fee.Approved, fee.Suspended))
+	fmt.Println(transitions.IsAllowed(fee.Suspended, fee.End))
 }
