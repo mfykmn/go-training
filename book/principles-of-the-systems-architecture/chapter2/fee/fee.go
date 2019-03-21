@@ -37,16 +37,6 @@ func (_ SeniorFee) label() string {
 	return "老人"
 }
 
-//go:generate stringer -type=feeType
-type feeType int
-
-const (
-	_ feeType = iota
-	Adult
-	Child
-	Senior
-)
-
 func Factory(feeType feeType) Fee {
 	switch feeType {
 	case Adult:
