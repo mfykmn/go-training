@@ -2,7 +2,9 @@ package main
 
 import (
 	"fmt"
+	"log"
 	"net/http"
+	"os"
 
 	"github.com/go-chi/chi"
 )
@@ -19,7 +21,15 @@ func main() {
 			r.Get("/", bHandler)
 		})
 	})
-	http.ListenAndServe(":8080", r)
+
+	port := os.Getenv("PORT")
+	if port == "" {
+		port = "8080"
+		log.Printf("Defaulting to port %s", port)
+	}
+
+	log.Printf("Listening on port %s", port)
+	log.Fatal(http.ListenAndServe(fmt.Sprintf(":%s", port), r))
 }
 
 func aHandler(w http.ResponseWriter, r *http.Request) {
