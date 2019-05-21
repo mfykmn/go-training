@@ -4,19 +4,28 @@ import (
 	"fmt"
 	"net/http"
 
-	"google.golang.org/appengine"
+	"github.com/go-chi/chi"
 )
 
 func main() {
-	http.HandleFunc("/", indexHandler)
-	appengine.Main() // Starts the server to receive requests
+	r := chi.NewRouter()
+	r.Route("/v1", func(r chi.Router) {
+
+		r.Route("/a", func(r chi.Router) {
+			r.Get("/", aHandler)
+		})
+
+		r.Route("/b", func(r chi.Router) {
+			r.Get("/", bHandler)
+		})
+	})
+	http.ListenAndServe(":8080", r)
 }
 
-func indexHandler(w http.ResponseWriter, r *http.Request) {
-	if r.URL.Path != "/" {
-		http.Redirect(w, r, "/", http.StatusFound)
-		return
-	}
+func aHandler(w http.ResponseWriter, r *http.Request) {
+	fmt.Fprintln(w, "Hello, A")
+}
 
-	fmt.Fprintln(w, "Hello, Gopher Network!")
+func bHandler(w http.ResponseWriter, r *http.Request) {
+	fmt.Fprintln(w, "Hello, B")
 }

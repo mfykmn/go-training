@@ -24,3 +24,6 @@ $ gcloud auth login
 $ gcloud app create
 $ gcloud app deploy
 ```
+
+# Memo
+google.golang.org/appengine packageを利用して、DatastoreやMemcacheなどを利用する場合、最初に必ず appengine.Main() を呼ぶ必要がある。
