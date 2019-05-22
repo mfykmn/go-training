@@ -7,12 +7,15 @@ $
 ```
 
 # AppEngine
+https://cloud.google.com/appengine/docs/standard/
+https://cloud.google.com/appengine/docs/quotas?hl=ja
+
 ## Config設定
 ```bash
-$ gcloud config configurations create {name}
-$ gcloud config configurations activate  {config_name}
-$ gcloud config set account {account}
-$ gcloud config set project {project_id}
+$ gcloud config configurations create [CONFIG_NAME]
+$ gcloud config configurations activate [CONFIG_NAME]
+$ gcloud config set account [Account]
+$ gcloud config set project [YOUR_PROJECT_NAME]
 $ gcloud config set compute/region asia-northeast1
 $ gcloud config set compute/zone asia-northeast1-a
 $ gcloud config configurations list
@@ -21,7 +24,8 @@ $ gcloud auth login
 
 ## デプロイ
 ```bash
-$ gcloud app create
+$ gcloud components install app-engine-go
+$ gcloud app create --project=[YOUR_PROJECT_NAME]
 $ gcloud app deploy
 ```
 

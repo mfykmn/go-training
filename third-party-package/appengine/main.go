@@ -13,12 +13,10 @@ func main() {
 	r := chi.NewRouter()
 	r.Route("/v1", func(r chi.Router) {
 
-		r.Route("/a", func(r chi.Router) {
-			r.Get("/", aHandler)
-		})
+		r.Get("/a", helloHandler)
 
-		r.Route("/b", func(r chi.Router) {
-			r.Get("/", bHandler)
+		r.Route("/admin", func(r chi.Router) {
+			r.Get("/", adminHandler)
 		})
 	})
 
@@ -32,10 +30,10 @@ func main() {
 	log.Fatal(http.ListenAndServe(fmt.Sprintf(":%s", port), r))
 }
 
-func aHandler(w http.ResponseWriter, r *http.Request) {
-	fmt.Fprintln(w, "Hello, A")
+func helloHandler(w http.ResponseWriter, r *http.Request) {
+	fmt.Fprintln(w, "Hello")
 }
 
-func bHandler(w http.ResponseWriter, r *http.Request) {
-	fmt.Fprintln(w, "Hello, B")
+func adminHandler(w http.ResponseWriter, r *http.Request) {
+	fmt.Fprintln(w, "Admin")
 }
