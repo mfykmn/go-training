@@ -1,9 +1,8 @@
 # Go
 ## 依存パッケージ取得
 ```bash
-$ export GO111MODULE=on
+$ export GO111MODULE=on # これいらないかも
 $ go mod init
-$ 
 ```
 
 # AppEngine
