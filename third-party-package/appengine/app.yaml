@@ -1,6 +1,6 @@
 runtime: go112
 
 env_variables:
-  CLOUDSQL_CONNECTION_NAME: INSTANCE_CONNECTION_NAME
+  CLOUDSQL_CONNECTION_NAME: project:asia-northeast1:test
   CLOUDSQL_USER: root
   CLOUDSQL_PASSWORD: password
