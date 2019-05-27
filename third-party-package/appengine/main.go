@@ -6,6 +6,7 @@ import (
 	"log"
 	"net/http"
 	"os"
+	"time"
 
 	"github.com/go-chi/chi"
 )
@@ -33,8 +34,13 @@ func main() {
 		w.Write(res)
 	})
 
-	r.Get("/schedule", func(w http.ResponseWriter, r *http.Request) {
-		if err := scheduler.Reserve(ctx); err != nil {
+	r.Get("/db/schedule", func(w http.ResponseWriter, r *http.Request) {
+		jst, err := time.LoadLocation("Asia/Tokyo")
+		if err != nil {
+			http.Error(w, fmt.Sprintf("Failed get location: %v", err), 500)
+			return
+		}
+		if err := scheduler.Reserve(ctx, time.Now().In(jst).Add(time.Duration(3) * time.Minute)); err != nil {
 			http.Error(w, fmt.Sprintf("Failed create schdule job: %v", err), 500)
 			return
 		}

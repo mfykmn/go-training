@@ -2,12 +2,19 @@ package main
 
 import (
 	"context"
+	"fmt"
 	"net/http"
 	"os"
+	"time"
 
 	"golang.org/x/oauth2/google"
 	"google.golang.org/api/cloudscheduler/v1"
 )
+
+func timeToUnixCron(t time.Time) string {
+	_, m, d := t.Date()
+	return fmt.Sprintf("%d %d %d %d %d", t.Minute(), t.Hour(), d, m, t.Weekday())
+}
 
 var (
 	projectID = os.Getenv("PROJECT_ID")
@@ -30,7 +37,7 @@ func newScheduler(ctx context.Context) (*Scheduler, error){
 	return &Scheduler{service}, nil
 }
 
-func (s *Scheduler) Reserve(ctx context.Context) error {
+func (s *Scheduler) Reserve(ctx context.Context, t time.Time) error {
 	parent := "projects/"+projectID+"/locations/"+locationID
 	rb := &cloudscheduler.Job{
 		Description: "Created by GAE",
@@ -39,7 +46,7 @@ func (s *Scheduler) Reserve(ctx context.Context) error {
 			RelativeUri: "/db",
 		},
 		TimeZone: "Asia/Tokyo",
-		Schedule: "* * * * *",
+		Schedule: timeToUnixCron(t),
 	}
 
 	_, err := s.Projects.Locations.Jobs.Create(parent, rb).Context(ctx).Do()
