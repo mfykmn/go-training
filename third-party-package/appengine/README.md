@@ -28,5 +28,6 @@ $ gcloud app create --project=[YOUR_PROJECT_NAME]
 $ gcloud app deploy
 ```
 
-# Memo
-google.golang.org/appengine packageを利用して、DatastoreやMemcacheなどを利用する場合、最初に必ず appengine.Main() を呼ぶ必要がある。
+# Cloud Schedule
+https://cloud.google.com/scheduler/docs/reference/rest/v1/projects.locations.jobs/create
+https://cloud.google.com/scheduler/docs/reference/rest/v1/projects.locations.jobs#Job
