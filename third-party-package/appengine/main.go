@@ -9,8 +9,13 @@ import (
 	"os"
 
 	"github.com/go-chi/chi"
-	"cloud.google.com/go/scheduler/apiv1"
-	schedulerpb "google.golang.org/genproto/googleapis/cloud/scheduler/v1"
+	"golang.org/x/oauth2/google"
+	"google.golang.org/api/cloudscheduler/v1"
+)
+
+var (
+	projectID = os.Getenv("PROJECT_ID")
+	locationID = os.Getenv("LOCATION_ID")
 )
 
 func main() {
@@ -19,9 +24,14 @@ func main() {
 		panic(err)
 	}
 
-	projectID := os.Getenv("PROJECT_ID")
+
+
 	ctx := context.Background()
-	c, err := scheduler.NewCloudSchedulerClient(ctx)
+	c, err := google.DefaultClient(ctx, cloudscheduler.CloudPlatformScope)
+	if err != nil {
+		panic(err)
+	}
+	cloudschedulerService, err := cloudscheduler.New(c)
 	if err != nil {
 		panic(err)
 	}
@@ -49,23 +59,26 @@ func main() {
 			w.Write(buf.Bytes())
 		})
 
-		r.Post("/schedule", func(w http.ResponseWriter, r *http.Request) {
-			req := &schedulerpb.CreateJobRequest {
-				Parent: "projects/"+projectID+"/locations/asia-northeast1",
-				Job: &schedulerpb.Job {
-					Name: "test",
-					Description: "test",
-					Schedule: "* * * * *",
-					TimeZone: "timeZone36848094",
+		r.Get("/schedule", func(w http.ResponseWriter, r *http.Request) {
+			parent := "projects/"+projectID+"/locations/"+locationID
+			rb := &cloudscheduler.Job{
+				Description: "Created by GAE",
+				AppEngineHttpTarget: &cloudscheduler.AppEngineHttpTarget{
+					HttpMethod: http.MethodGet,
+					RelativeUri: "/admin/db",
 				},
+				TimeZone: "Asia/Tokyo",
+				Schedule: "* * * * *",
 			}
-			resp, err := c.CreateJob(ctx, req)
+
+			resp, err := cloudschedulerService.Projects.Locations.Jobs.Create(parent, rb).Context(ctx).Do()
 			if err != nil {
-				http.Error(w, fmt.Sprintf("Failed CreateJob: %v", err), 500)
+				http.Error(w, fmt.Sprintf("Failed create schdule job: %v", err), 500)
 				return
 			}
 
-			_ = resp
+			buf := bytes.NewBufferString(fmt.Sprintf("%#v\n", resp))
+			w.Write(buf.Bytes())
 		})
 	})
 
