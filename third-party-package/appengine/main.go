@@ -2,16 +2,26 @@ package main
 
 import (
 	"bytes"
+	"context"
 	"fmt"
 	"log"
 	"net/http"
 	"os"
 
 	"github.com/go-chi/chi"
+	"cloud.google.com/go/scheduler/apiv1"
+	schedulerpb "google.golang.org/genproto/googleapis/cloud/scheduler/v1"
 )
 
 func main() {
 	db, err := newDB()
+	if err != nil {
+		panic(err)
+	}
+
+	projectID := os.Getenv("PROJECT_ID")
+	ctx := context.Background()
+	c, err := scheduler.NewCloudSchedulerClient(ctx)
 	if err != nil {
 		panic(err)
 	}
@@ -37,6 +47,25 @@ func main() {
 				fmt.Fprintf(buf, "- %s\n", dbName)
 			}
 			w.Write(buf.Bytes())
+		})
+
+		r.Post("/schedule", func(w http.ResponseWriter, r *http.Request) {
+			req := &schedulerpb.CreateJobRequest {
+				Parent: "projects/"+projectID+"/locations/asia-northeast1",
+				Job: &schedulerpb.Job {
+					Name: "test",
+					Description: "test",
+					Schedule: "* * * * *",
+					TimeZone: "timeZone36848094",
+				},
+			}
+			resp, err := c.CreateJob(ctx, req)
+			if err != nil {
+				http.Error(w, fmt.Sprintf("Failed CreateJob: %v", err), 500)
+				return
+			}
+
+			_ = resp
 		})
 	})
 
