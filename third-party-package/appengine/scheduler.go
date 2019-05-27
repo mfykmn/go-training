@@ -36,7 +36,7 @@ func (s *Scheduler) Reserve(ctx context.Context) error {
 		Description: "Created by GAE",
 		AppEngineHttpTarget: &cloudscheduler.AppEngineHttpTarget{
 			HttpMethod: http.MethodGet,
-			RelativeUri: "/admin/db",
+			RelativeUri: "/db",
 		},
 		TimeZone: "Asia/Tokyo",
 		Schedule: "* * * * *",
