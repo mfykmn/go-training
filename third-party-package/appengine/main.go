@@ -1,7 +1,6 @@
 package main
 
 import (
-	"bytes"
 	"context"
 	"fmt"
 	"log"
@@ -9,13 +8,6 @@ import (
 	"os"
 
 	"github.com/go-chi/chi"
-	"golang.org/x/oauth2/google"
-	"google.golang.org/api/cloudscheduler/v1"
-)
-
-var (
-	projectID = os.Getenv("PROJECT_ID")
-	locationID = os.Getenv("LOCATION_ID")
 )
 
 func main() {
@@ -24,62 +16,29 @@ func main() {
 		panic(err)
 	}
 
-
-
 	ctx := context.Background()
-	c, err := google.DefaultClient(ctx, cloudscheduler.CloudPlatformScope)
-	if err != nil {
-		panic(err)
-	}
-	cloudschedulerService, err := cloudscheduler.New(c)
+  scheduler, err := newScheduler(ctx)
 	if err != nil {
 		panic(err)
 	}
 
 	r := chi.NewRouter()
 	r.Get("/", helloHandler)
-	r.Route("/admin", func(r chi.Router) {
-		r.Get("/db", func(w http.ResponseWriter, r *http.Request) {
-			rows, err := db.Query("SHOW DATABASES")
-			if err != nil {
-				http.Error(w, fmt.Sprintf("Could not query db: %v", err), 500)
-				return
-			}
-			defer rows.Close()
+	r.Get("/db", func(w http.ResponseWriter, r *http.Request) {
+		res, err := db.Show()
+		if err != nil {
+			http.Error(w, fmt.Sprintf("Failed show db: %v", err), 500)
+			return
+		}
+		w.Write(res)
+	})
 
-			buf := bytes.NewBufferString("Databases:\n")
-			for rows.Next() {
-				var dbName string
-				if err := rows.Scan(&dbName); err != nil {
-					http.Error(w, fmt.Sprintf("Could not scan result: %v", err), 500)
-					return
-				}
-				fmt.Fprintf(buf, "- %s\n", dbName)
-			}
-			w.Write(buf.Bytes())
-		})
-
-		r.Get("/schedule", func(w http.ResponseWriter, r *http.Request) {
-			parent := "projects/"+projectID+"/locations/"+locationID
-			rb := &cloudscheduler.Job{
-				Description: "Created by GAE",
-				AppEngineHttpTarget: &cloudscheduler.AppEngineHttpTarget{
-					HttpMethod: http.MethodGet,
-					RelativeUri: "/admin/db",
-				},
-				TimeZone: "Asia/Tokyo",
-				Schedule: "* * * * *",
-			}
-
-			resp, err := cloudschedulerService.Projects.Locations.Jobs.Create(parent, rb).Context(ctx).Do()
-			if err != nil {
-				http.Error(w, fmt.Sprintf("Failed create schdule job: %v", err), 500)
-				return
-			}
-
-			buf := bytes.NewBufferString(fmt.Sprintf("%#v\n", resp))
-			w.Write(buf.Bytes())
-		})
+	r.Get("/schedule", func(w http.ResponseWriter, r *http.Request) {
+		if err := scheduler.Reserve(ctx); err != nil {
+			http.Error(w, fmt.Sprintf("Failed create schdule job: %v", err), 500)
+			return
+		}
+		fmt.Fprintln(w, "Scheduled")
 	})
 
 	port := os.Getenv("PORT")
