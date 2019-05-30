@@ -1,4 +1,4 @@
 provider "google" {
-  project     = "${project}"
-  region      = "asia-northeast1"
+  project = "{project}"
+  region  = "asia-northeast1"
 }
