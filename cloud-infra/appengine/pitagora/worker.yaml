@@ -1,0 +1,8 @@
+runtime: go112
+service: worker
+env_variables:
+  PROJECT_ID: {project}
+  LOCATION_ID: asia-northeast1
+  CLOUDSQL_CONNECTION_NAME: {project}:asia-northeast1:test
+  CLOUDSQL_USER: root
+  CLOUDSQL_PASSWORD: password
