@@ -10,7 +10,11 @@ import (
 	"github.com/go-chi/chi"
 )
 
-var port = os.Getenv("PORT")
+var (
+	port = os.Getenv("PORT")
+	projectID = os.Getenv("PROJECT_ID")
+	locationID = os.Getenv("LOCATION_ID")
+)
 
 func main() {
 	// Init
@@ -19,7 +23,11 @@ func main() {
 		panic(err)
 	}
 	ctx := context.Background()
-  scheduler, err := newScheduler(ctx)
+  scheduler, err := newScheduler(ctx, projectID, locationID)
+	if err != nil {
+		panic(err)
+	}
+	storage, err := newStorage(ctx, projectID)
 	if err != nil {
 		panic(err)
 	}
@@ -28,7 +36,9 @@ func main() {
 	r := chi.NewRouter()
 	r.Get("/", helloHandler)
 	r.Get("/db", dbHandlerFunc(db))
-	r.Get("/db/schedule", scheduleHandlerFunc(ctx, scheduler))
+	r.Get("/schedule", scheduleHandlerFunc(ctx, scheduler))
+	r.Get("/storage/download", storageDownloadHandlerFunc(ctx, storage))
+	r.Get("/storage/upload", storageUploadHandlerFunc(ctx, storage))
 
 	// Serve
 	if port == "" {

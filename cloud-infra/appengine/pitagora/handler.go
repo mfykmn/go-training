@@ -36,3 +36,30 @@ func scheduleHandlerFunc(ctx context.Context, scheduler *Scheduler) func(w http.
 		fmt.Fprintln(w, "Scheduled")
 	}
 }
+
+var bucket = "pitagora-contents"
+
+func storageDownloadHandlerFunc(ctx context.Context, storage *Storage) func(w http.ResponseWriter, r *http.Request) {
+	return func(w http.ResponseWriter, r *http.Request) {
+		obj, err := storage.Download(ctx, bucket, "aaa.json")
+		if err != nil {
+			http.Error(w, fmt.Sprintf("Failed download to storage: %v", err), 500)
+			return
+		}
+		fmt.Fprintln(w, "Download", obj.data)
+	}
+}
+
+func storageUploadHandlerFunc(ctx context.Context, storage *Storage) func(w http.ResponseWriter, r *http.Request) {
+	return func(w http.ResponseWriter, r *http.Request) {
+		if err := storage.Upload(ctx, bucket, &Object{
+			name: "aaa.json",
+			data: `{"key":"vals"}`,
+		}); err != nil {
+			http.Error(w, fmt.Sprintf("Failed upload to storage: %v", err), 500)
+			return
+		}
+		fmt.Fprintln(w, "Uploaded")
+	}
+}
+

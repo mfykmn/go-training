@@ -4,7 +4,6 @@ import (
 	"context"
 	"fmt"
 	"net/http"
-	"os"
 	"time"
 
 	"golang.org/x/oauth2/google"
@@ -16,16 +15,14 @@ func timeToUnixCron(t time.Time) string {
 	return fmt.Sprintf("%d %d %d %d %d", t.Minute(), t.Hour(), d, m, t.Weekday())
 }
 
-var (
-	projectID = os.Getenv("PROJECT_ID")
-	locationID = os.Getenv("LOCATION_ID")
-)
-
 type Scheduler struct {
+	projectID string
+	locationID string
+
 	*cloudscheduler.Service
 }
 
-func newScheduler(ctx context.Context) (*Scheduler, error){
+func newScheduler(ctx context.Context, projectID, locationID string) (*Scheduler, error){
 	c, err := google.DefaultClient(ctx, cloudscheduler.CloudPlatformScope)
 	if err != nil {
 		return nil, err
@@ -34,11 +31,14 @@ func newScheduler(ctx context.Context) (*Scheduler, error){
 	if err != nil {
 		return nil, err
 	}
-	return &Scheduler{service}, nil
+	return &Scheduler{
+		projectID: projectID,
+		locationID: locationID,
+		Service: service}, nil
 }
 
 func (s *Scheduler) Reserve(ctx context.Context, t time.Time) error {
-	parent := "projects/"+projectID+"/locations/"+locationID
+	parent := "projects/"+s.projectID+"/locations/"+s.locationID
 	rb := &cloudscheduler.Job{
 		Description: "Created by GAE",
 		AppEngineHttpTarget: &cloudscheduler.AppEngineHttpTarget{
