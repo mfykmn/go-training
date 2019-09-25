@@ -39,3 +39,8 @@ $ grpc_cli call localhost:50051 pancake.baker.PancakeBakerService.Bake 'menu: 1'
   
   Rpc succeeded with OK status
 ```
+
+```bash
+$ brew install clang-format
+$ find . -name '*.proto' | xargs clang-format -i
+```
