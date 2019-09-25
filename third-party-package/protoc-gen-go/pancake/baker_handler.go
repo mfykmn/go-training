@@ -2,6 +2,7 @@ package main
 
 import (
 	"context"
+	"fmt"
 	"github.com/golang/protobuf/ptypes/timestamp"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
@@ -38,6 +39,7 @@ func (h *BakerHandler) Bake(ctx context.Context, req *api.BakeRequest) (*api.Bak
 		return nil, status.Errorf(codes.InvalidArgument, "パンケーキを選んでください!")
 	}
 
+	fmt.Printf("Baked a pancake for %v !\n", ctx.Value("UserName"))
 	now := time.Now()
 	h.report.Lock()
 	h.report.data[req.Menu] = h.report.data[req.Menu] + 1
