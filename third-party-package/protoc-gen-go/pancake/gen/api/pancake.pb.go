@@ -69,13 +69,13 @@ func (Pancake_Menu) EnumDescriptor() ([]byte, []int) {
 // Pancake は一枚一枚の焼かれたパンケーキを表します。
 type Pancake struct {
 	// シェフの名前
-	ChefName string `addressbook:"bytes,1,opt,name=chef_name,json=chefName,proto3" json:"chef_name,omitempty"`
+	ChefName string `protobuf:"bytes,1,opt,name=chef_name,json=chefName,proto3" json:"chef_name,omitempty"`
 	// メニュー
-	Menu Pancake_Menu `addressbook:"varint,2,opt,name=menu,proto3,enum=pancake.baker.Pancake_Menu" json:"menu,omitempty"`
+	Menu Pancake_Menu `protobuf:"varint,2,opt,name=menu,proto3,enum=pancake.baker.Pancake_Menu" json:"menu,omitempty"`
 	// 焼き具合を表すスコアです(0-0.9)
-	TechnicalScore float32 `addressbook:"fixed32,3,opt,name=technical_score,json=technicalScore,proto3" json:"technical_score,omitempty"`
+	TechnicalScore float32 `protobuf:"fixed32,3,opt,name=technical_score,json=technicalScore,proto3" json:"technical_score,omitempty"`
 	// 焼いた日時
-	CreateTime           *timestamp.Timestamp `addressbook:"bytes,15,opt,name=create_time,json=createTime,proto3" json:"create_time,omitempty"`
+	CreateTime           *timestamp.Timestamp `protobuf:"bytes,15,opt,name=create_time,json=createTime,proto3" json:"create_time,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}             `json:"-"`
 	XXX_unrecognized     []byte               `json:"-"`
 	XXX_sizecache        int32                `json:"-"`
@@ -136,7 +136,7 @@ func (m *Pancake) GetCreateTime() *timestamp.Timestamp {
 
 // Report はどのくらいパンケーキを焼いたかについての報告書を表します
 type Report struct {
-	BakeCounts           []*Report_BakeCount `addressbook:"bytes,1,rep,name=bake_counts,json=bakeCounts,proto3" json:"bake_counts,omitempty"`
+	BakeCounts           []*Report_BakeCount `protobuf:"bytes,1,rep,name=bake_counts,json=bakeCounts,proto3" json:"bake_counts,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}            `json:"-"`
 	XXX_unrecognized     []byte              `json:"-"`
 	XXX_sizecache        int32               `json:"-"`
@@ -175,8 +175,8 @@ func (m *Report) GetBakeCounts() []*Report_BakeCount {
 }
 
 type Report_BakeCount struct {
-	Menu                 Pancake_Menu `addressbook:"varint,1,opt,name=menu,proto3,enum=pancake.baker.Pancake_Menu" json:"menu,omitempty"`
-	Count                int32        `addressbook:"varint,2,opt,name=count,proto3" json:"count,omitempty"`
+	Menu                 Pancake_Menu `protobuf:"varint,1,opt,name=menu,proto3,enum=pancake.baker.Pancake_Menu" json:"menu,omitempty"`
+	Count                int32        `protobuf:"varint,2,opt,name=count,proto3" json:"count,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}     `json:"-"`
 	XXX_unrecognized     []byte       `json:"-"`
 	XXX_sizecache        int32        `json:"-"`
@@ -222,7 +222,7 @@ func (m *Report_BakeCount) GetCount() int32 {
 }
 
 type BakeRequest struct {
-	Menu                 Pancake_Menu `addressbook:"varint,1,opt,name=menu,proto3,enum=pancake.baker.Pancake_Menu" json:"menu,omitempty"`
+	Menu                 Pancake_Menu `protobuf:"varint,1,opt,name=menu,proto3,enum=pancake.baker.Pancake_Menu" json:"menu,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}     `json:"-"`
 	XXX_unrecognized     []byte       `json:"-"`
 	XXX_sizecache        int32        `json:"-"`
@@ -261,7 +261,7 @@ func (m *BakeRequest) GetMenu() Pancake_Menu {
 }
 
 type BakeResponse struct {
-	Pancake              *Pancake `addressbook:"bytes,1,opt,name=pancake,proto3" json:"pancake,omitempty"`
+	Pancake              *Pancake `protobuf:"bytes,1,opt,name=pancake,proto3" json:"pancake,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -331,7 +331,7 @@ func (m *ReportRequest) XXX_DiscardUnknown() {
 var xxx_messageInfo_ReportRequest proto.InternalMessageInfo
 
 type ReportResponse struct {
-	Report               *Report  `addressbook:"bytes,1,opt,name=report,proto3" json:"report,omitempty"`
+	Report               *Report  `protobuf:"bytes,1,opt,name=report,proto3" json:"report,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
