@@ -1,0 +1,12 @@
+# TestSuccessSelectOneById
+-
+    id: 1
+    name: "Ken"
+
+# TestSuccessInsert
+# id: 2 skip
+
+# TestSuccessUpdate
+-
+    id: 3
+    name: "Ren"
