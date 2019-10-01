@@ -50,11 +50,11 @@ func (Person_PhoneType) EnumDescriptor() ([]byte, []int) {
 }
 
 type Person struct {
-	Name                 string                `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
-	Id                   int32                 `protobuf:"varint,2,opt,name=id,proto3" json:"id,omitempty"`
-	Email                string                `protobuf:"bytes,3,opt,name=email,proto3" json:"email,omitempty"`
-	Phones               []*Person_PhoneNumber `protobuf:"bytes,4,rep,name=phones,proto3" json:"phones,omitempty"`
-	LastUpdated          *timestamp.Timestamp  `protobuf:"bytes,5,opt,name=last_updated,json=lastUpdated,proto3" json:"last_updated,omitempty"`
+	Name                 string                `addressbook:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
+	Id                   int32                 `addressbook:"varint,2,opt,name=id,proto3" json:"id,omitempty"`
+	Email                string                `addressbook:"bytes,3,opt,name=email,proto3" json:"email,omitempty"`
+	Phones               []*Person_PhoneNumber `addressbook:"bytes,4,rep,name=phones,proto3" json:"phones,omitempty"`
+	LastUpdated          *timestamp.Timestamp  `addressbook:"bytes,5,opt,name=last_updated,json=lastUpdated,proto3" json:"last_updated,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}              `json:"-"`
 	XXX_unrecognized     []byte                `json:"-"`
 	XXX_sizecache        int32                 `json:"-"`
@@ -121,8 +121,8 @@ func (m *Person) GetLastUpdated() *timestamp.Timestamp {
 }
 
 type Person_PhoneNumber struct {
-	Number               string           `protobuf:"bytes,1,opt,name=number,proto3" json:"number,omitempty"`
-	Type                 Person_PhoneType `protobuf:"varint,2,opt,name=type,proto3,enum=tutorial.Person_PhoneType" json:"type,omitempty"`
+	Number               string           `addressbook:"bytes,1,opt,name=number,proto3" json:"number,omitempty"`
+	Type                 Person_PhoneType `addressbook:"varint,2,opt,name=type,proto3,enum=tutorial.Person_PhoneType" json:"type,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}         `json:"-"`
 	XXX_unrecognized     []byte           `json:"-"`
 	XXX_sizecache        int32            `json:"-"`
@@ -169,7 +169,7 @@ func (m *Person_PhoneNumber) GetType() Person_PhoneType {
 
 // Our address book file is just one of these.
 type AddressBook struct {
-	People               []*Person `protobuf:"bytes,1,rep,name=people,proto3" json:"people,omitempty"`
+	People               []*Person `addressbook:"bytes,1,rep,name=people,proto3" json:"people,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}  `json:"-"`
 	XXX_unrecognized     []byte    `json:"-"`
 	XXX_sizecache        int32     `json:"-"`
