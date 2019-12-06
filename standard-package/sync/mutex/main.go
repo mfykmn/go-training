@@ -11,7 +11,7 @@ func main() {
 
 	increment := func() {
 		lock.Lock()
-		defer lock.Unlock()
+		defer lock.Unlock() // panicになってもよびだせるようにしている、もしこうしていない場合にpanicになるとデッドロックになる危険性がある
 		count++
 		fmt.Printf("Inrementing: %d\n", count)
 	}
