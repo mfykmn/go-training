@@ -11,6 +11,9 @@ Golangの学習結果保存用リポジトリ
 ├── cloud-infra
 │     * クラウドインフラ + Goの学習用
 │
+├── algorithms
+│     * アルゴリズム学習用
+│
 ├── design-pattern
 │     * デザインパターン学習用
 │
