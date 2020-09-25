@@ -14,5 +14,5 @@ func minv(a []int) (minv int) {
 			minv = v
 		}
 	}
-	return minv
+	return
 }
