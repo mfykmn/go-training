@@ -7,8 +7,7 @@ func main() {
 	fmt.Print(sum(a))
 }
 
-func sum(a []int) int {
-	var sum int
+func sum(a []int) (sum int) {
 	for _, v := range a {
 		sum += v
 	}
