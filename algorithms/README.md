@@ -3,8 +3,8 @@
 
 .
 ├── array # 配列への操作
-| ├── query
-| └── rearranging
+│ ├── query
+│ └── rearranging
 ├── search # 探索
 ├── sort # 整列
 ├── numeric # 数値計算
