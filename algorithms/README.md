@@ -1,20 +1,15 @@
 # Algorithms
 標準pkgにあるようなアルゴリズムを再実装しているのでそのまま使わないように！
 
-## 探索
-./search
-├── linear
-├── binary
-└── hashing
+.
+├── array # 配列への操作
+| ├── query
+| └── rearranging
+├── search # 探索
+├── sort # 整列
+├── numeric # 数値計算
+└── string-search # 文字列探索
 
-## 整列
-./sort
-├── selection
-├── bubble
-└── insertion
-
-## 数値計算
-./numeric
-
-## 文字列探索
-./string-search
+# 参考
+- アルゴリズムビジュアル大辞典
+- アルゴリズムをはじめよう
