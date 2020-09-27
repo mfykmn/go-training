@@ -12,4 +12,5 @@
 
 # 参考
 - アルゴリズムビジュアル大辞典
+  - https://yutaka-watanobe.github.io/star-aida/books/
 - アルゴリズムをはじめよう
