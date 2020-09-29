@@ -29,7 +29,7 @@ func merge(a []int, left, mid, right int) {
 	tmp := make([]int, right)
 
 	// 配列のコピー
-	for i := 0; i <= right-1; i++ {
+	for i := left; i <= right-1; i++ {
 		tmp[i] = a[i]
 	}
 
@@ -37,7 +37,7 @@ func merge(a []int, left, mid, right int) {
 	reverse(tmp, mid, right)
 
 	i, j := left, right-1
-	for k := 0; k <= right-1; k++ {
+	for k := left; k <= right-1; k++ {
 		if tmp[i] <= tmp[j] {
 			a[k] = tmp[i]
 			i += 1
