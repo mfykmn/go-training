@@ -14,13 +14,13 @@ func main() {
 
 	fmt.Println("----------------after-----------------")
 	index := len(a) - 1
-	insertionSort(a, index)
+	insertion(a, index)
 	for i, v := range a {
 		fmt.Printf("val:%s, address:%s\n", v, &a[i])
 	}
 }
 
-func insertionSort(a []int, i int) {
+func insertion(a []int, i int) {
 	j := i - 1
 	tmp := a[i]
 
