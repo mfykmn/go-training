@@ -11,7 +11,7 @@ func main() {
 		fmt.Printf("val:%s, address:%s\n", v, &a[i])
 	}
 
-	insertionSort(a)
+	insertionSort(a, len(a))
 
 	fmt.Println("----------------after-----------------")
 	for i, v := range a {
@@ -19,8 +19,7 @@ func main() {
 	}
 }
 
-func insertionSort(a []int) {
-	n := len(a)
+func insertionSort(a []int, n int) {
 	for i := 1; i <= n-1; i++ {
 		insertion(a, i)
 	}
