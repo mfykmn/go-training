@@ -18,7 +18,7 @@ func NewQueue(size int) *Queue {
 }
 
 func (q *Queue) enqueue(x int) error {
-	if q.tail+1 == q.head {
+	if q.tail+1 == q.head { //TODO これ本当に必要？
 		return fmt.Errorf("head exceeds tail")
 	}
 	if q.tail > q.size-1 {
