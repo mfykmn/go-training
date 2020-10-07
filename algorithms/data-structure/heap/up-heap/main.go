@@ -3,6 +3,7 @@ package main
 import "fmt"
 
 func main() {
+	// ヒープ条件を満たす整数の列
 	a := []int{23, 18, 11, 7, 5, 6, 9, 3, 2, 1, 2, 3}
 	fmt.Println(a)
 	increase(a, 9, 25)
