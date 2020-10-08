@@ -22,7 +22,10 @@ func main() {
 	root.left.left.left = &Node{70, nil, nil}
 
 	preorder(root)
+	fmt.Print(res)
 }
+
+var res []int
 
 type Node struct {
 	val   int
@@ -32,7 +35,7 @@ type Node struct {
 
 func preorder(u *Node) {
 	if u != nil {
-		fmt.Printf("%d ", u.val)
+		res = append(res, u.val)
 		preorder(u.left)
 		preorder(u.right)
 	}
