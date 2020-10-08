@@ -1,8 +1,9 @@
 package main
 
 import (
-	"github.com/labstack/echo/engine/fasthttp"
-	"./router"
+	"github.com/mfykmn/go-training/third-party-package/go-cac/router"
+
+	"github.com/webx-top/echo/engine/fasthttp"
 )
 
 func main() {

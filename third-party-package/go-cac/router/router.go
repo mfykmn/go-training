@@ -1,8 +1,11 @@
 package router
 
 import (
-	"../controller"
-	"github.com/labstack/echo"
+	"net/http"
+
+	"github.com/mfykmn/go-training/third-party-package/go-cac/controller"
+
+	"github.com/webx-top/echo"
 )
 
 func Init() *echo.Echo {
@@ -12,8 +15,8 @@ func Init() *echo.Echo {
 	v1 := e.Group("/cache")
 	{
 		// キャッシュ
-		v1.GET("/id-mapping/:mid", controller.GetIDMapping)
-		v1.POST("/id-mapping", controller.PostIDMapping)
+		v1.Add(http.MethodGet, "/id-mapping/:mid", controller.GetIDMapping)
+		v1.Add(http.MethodPost, "/id-mapping", controller.PostIDMapping)
 	}
 	return e
 }
