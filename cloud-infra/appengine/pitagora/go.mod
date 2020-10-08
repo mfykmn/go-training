@@ -1,4 +1,4 @@
-module github.com/mafuyuk/go-training/third-party-package/appengine
+module github.com/mfykmn/go-training/third-party-package/appengine
 
 require (
 	cloud.google.com/go v0.34.0

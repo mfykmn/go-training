@@ -3,7 +3,7 @@ package main
 import (
 	"fmt"
 
-	"github.com/mafuyuk/go-training/third-party-package/xid/xid"
+	"github.com/mfykmn/go-training/third-party-package/xid/xid"
 )
 
 func main() {

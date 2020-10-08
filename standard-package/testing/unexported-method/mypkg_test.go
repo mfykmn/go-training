@@ -4,7 +4,7 @@ import (
 	"log"
 	"testing"
 
-	"github.com/mafuyuk/go-training/standard-package/testing/unexported-method"
+	"github.com/mfykmn/go-training/standard-package/testing/unexported-method"
 )
 
 func TestCounter(t *testing.T) {

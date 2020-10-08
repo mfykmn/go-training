@@ -14,7 +14,7 @@ func main() {
 	m := map[string]string{
 		"0":   "hello",
 		"aaa": "world",
-		"bbb": "mafuyuk",
+		"bbb": "mfykmn",
 	}
 	if _, err := marshall(m); err != nil {
 		log.Fatal(err)

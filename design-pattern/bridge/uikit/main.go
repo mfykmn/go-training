@@ -1,8 +1,8 @@
 package main
 
 import (
-	"github.com/mafuyuk/go-training/design-pattern/bridge/uikit/draw"
-	"github.com/mafuyuk/go-training/design-pattern/bridge/uikit/shape"
+	"github.com/mfykmn/go-training/design-pattern/bridge/uikit/draw"
+	"github.com/mfykmn/go-training/design-pattern/bridge/uikit/shape"
 )
 
 func main() {

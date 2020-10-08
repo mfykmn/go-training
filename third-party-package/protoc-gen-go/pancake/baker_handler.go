@@ -10,7 +10,7 @@ import (
 	"sync"
 	"time"
 
-	"github.com/mafuyuk/go-training/third-party-package/protoc-gen-go/pancake/gen/api"
+	"github.com/mfykmn/go-training/third-party-package/protoc-gen-go/pancake/gen/api"
 )
 
 func init() {

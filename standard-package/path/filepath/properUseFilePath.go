@@ -16,7 +16,7 @@ func main() {
 		log.Fatal(err)
 	}
 
-	fmt.Println(cwd) // $HOME/go/src/github.com/mafuyuk/go-training/minna-no-go
+	fmt.Println(cwd) // $HOME/go/src/github.com/mfykmn/go-training/minna-no-go
 
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
 		// httpリクエストは論理パスなのでpath

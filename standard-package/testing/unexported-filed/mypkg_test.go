@@ -3,7 +3,7 @@ package unexported_test // テスト対象とは別のパッケージ
 import (
 	"testing"
 
-	"github.com/mafuyuk/go-training/standard-package/testing/unexported-filed"
+	"github.com/mfykmn/go-training/standard-package/testing/unexported-filed"
 )
 
 func TestCounter(t *testing.T) {

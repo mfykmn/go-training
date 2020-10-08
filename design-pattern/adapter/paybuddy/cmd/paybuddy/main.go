@@ -5,8 +5,8 @@ import (
 	"log"
 	"time"
 
-	"github.com/mafuyuk/go-training/design-pattern/adapter/paybuddy/bank"
-	"github.com/mafuyuk/go-training/design-pattern/adapter/paybuddy/paypal"
+	"github.com/mfykmn/go-training/design-pattern/adapter/paybuddy/bank"
+	"github.com/mfykmn/go-training/design-pattern/adapter/paybuddy/paypal"
 )
 
 // Payment checkouts order

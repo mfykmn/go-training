@@ -3,7 +3,7 @@ package main
 import (
 	"log"
 
-	"github.com/mafuyuk/go-training/third-party-package/zap"
+	"github.com/mfykmn/go-training/third-party-package/zap"
 )
 
 //  go run cmd/main.go 1> stdout.log 2> stderr.log

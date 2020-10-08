@@ -2,7 +2,7 @@ package main
 
 import (
 	"fmt"
-	"github.com/mafuyuk/go-training/third-party-package/protoc-gen-go/addressbook"
+	"github.com/mfykmn/go-training/third-party-package/protoc-gen-go/addressbook"
 )
 
 func main() {

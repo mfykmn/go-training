@@ -30,7 +30,7 @@ func BenchmarkBuf10000(b *testing.B) { bench(b, 10000, buf) }
 //$ go test -bench .
 //goos: darwin
 //goarch: amd64
-//pkg: github.com/mafuyuk/go-training/standard-package/testing
+//pkg: github.com/mfykmn/go-training/standard-package/testing
 
 //                ループが実行された回数 １ループごとの所要時間 １ループごとのアロケーションされたバイト数 １ループごとのアロケーション回数
 //BenchmarkCat3-4           10000000           127 ns/op              54 B/op                             3 allocs/op

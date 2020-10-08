@@ -8,7 +8,7 @@ import (
 	"os"
 	"os/signal"
 
-	"github.com/mafuyuk/go-training/third-party-package/protoc-gen-go/pancake/gen/api"
+	"github.com/mfykmn/go-training/third-party-package/protoc-gen-go/pancake/gen/api"
 
 	grpc_middleware "github.com/grpc-ecosystem/go-grpc-middleware"
 	"github.com/grpc-ecosystem/go-grpc-middleware/auth"

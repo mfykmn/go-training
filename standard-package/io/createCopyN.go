@@ -9,8 +9,8 @@ import (
 
 // Goならわかるシステムプログラミングの回答 Q3.5
 func main() {
-	reader1 := strings.NewReader("mafuyuk")
-	reader2 := strings.NewReader("mafuyuk")
+	reader1 := strings.NewReader("mfykmn")
+	reader2 := strings.NewReader("mfykmn")
 
 	// もとからあるCopyN
 	written1, err := io.CopyN(os.Stdout, reader1, 3)

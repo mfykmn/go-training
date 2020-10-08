@@ -1,4 +1,4 @@
-module github.com/mafuyuk/go-training/third-party-package/google/wire
+module github.com/mfykmn/go-training/third-party-package/google/wire
 
 go 1.12
 

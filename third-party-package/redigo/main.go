@@ -5,7 +5,7 @@ import (
 	"log"
 	"net/http"
 
-	"github.com/mafuyuk/go-training/third-party-package/redigo/redis"
+	"github.com/mfykmn/go-training/third-party-package/redigo/redis"
 )
 
 func main() {

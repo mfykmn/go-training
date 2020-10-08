@@ -1,6 +1,6 @@
 package shape
 
-import "github.com/mafuyuk/go-training/design-pattern/bridge/uikit/draw"
+import "github.com/mfykmn/go-training/design-pattern/bridge/uikit/draw"
 
 type Circle struct {
 	DrawingContext draw.Drawer

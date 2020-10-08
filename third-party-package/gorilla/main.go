@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"log"
 
-	"github.com/mafuyuk/go-training/third-party-package/gorilla/http"
+	"github.com/mfykmn/go-training/third-party-package/gorilla/http"
 )
 
 // curl http://localhost:8080/v1/users

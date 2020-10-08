@@ -5,7 +5,7 @@ import (
 	"log"
 	"testing"
 
-	"github.com/mafuyuk/go-training/standard-package/testing/unexported-type"
+	"github.com/mfykmn/go-training/standard-package/testing/unexported-type"
 )
 
 func TestClient(t *testing.T) {

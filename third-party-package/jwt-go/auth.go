@@ -13,17 +13,16 @@ import (
 func GetTokenHandler(rw http.ResponseWriter, r *http.Request) {
 	// TODO 認証チェック
 
-
 	// headerのセット
 	token := jwt.New(jwt.SigningMethodHS256)
 
 	// claimsのセット
 	claims := token.Claims.(jwt.MapClaims)
 	claims["admin"] = true
-	claims["iss"] = "mafuyuk.com"
+	claims["iss"] = "mfykmn.com"
 	claims["sub"] = "54546557354"
 	claims["name"] = "taro"
-	claims["iat"] = time.Now() // JWTを発行した時刻
+	claims["iat"] = time.Now()                            // JWTを発行した時刻
 	claims["exp"] = time.Now().Add(time.Hour * 24).Unix() // 有効期限
 
 	// 電子署名
