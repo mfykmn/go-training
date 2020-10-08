@@ -3,7 +3,7 @@ package main
 import (
 	"fmt"
 
-	"github.com/mafuyuk/go-training/book/principles-of-the-systems-architecture/chapter2/fee"
+	"github.com/mafuyuk/go-training/teaching-material/book/principles-of-the-systems-architecture/chapter2/fee"
 )
 
 func main() {

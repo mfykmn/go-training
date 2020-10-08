@@ -20,7 +20,7 @@ func NewCargo(size float32) *Cargo {
 // Voyage 公開を表す
 type Voyage struct {
 	cargoList []*Cargo
-	capacity float32
+	capacity  float32
 }
 
 func NewVoyage(capacity float32) *Voyage {

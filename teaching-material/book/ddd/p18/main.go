@@ -3,7 +3,7 @@ package main
 import (
 	"fmt"
 
-	"github.com/mafuyuk/go-training/book/ddd/p18/domain"
+	"github.com/mafuyuk/go-training/teaching-material/book/ddd/p18/domain"
 )
 
 func main() {
