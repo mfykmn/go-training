@@ -11,7 +11,7 @@ func main() {
 }
 
 func countingSort(a []int, max int) []int {
-	c := make([]int, max+1, max+1)
+	c := make([]int, max+1, max+1) // カウント用配列
 	b := make([]int, len(a), len(a))
 
 	for i := 0; i < len(a); i++ {
@@ -19,7 +19,7 @@ func countingSort(a []int, max int) []int {
 	}
 	fmt.Println(c)
 
-	// 一次元累積和を出す
+	// 累積和を出す
 	for i := 1; i <= max; i++ {
 		c[i] = c[i] + c[i-1]
 	}
