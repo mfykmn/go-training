@@ -29,29 +29,32 @@ func breadthFirstSearch(graph *Undirected, start, size int) error {
 		color[i] = "White"
 	}
 
-	fmt.Printf("init\n%#v\n", color)
+	fmt.Printf("----------init----------\n%#v\n--------------------\n", color)
 
 	color[start] = "Gray"
 	queue.enqueue(start)
 
 	for {
 		if queue.empty() {
-			return nil
+			break
 		}
 		u, err := queue.dequeue()
 		if err != nil {
 			return err
 		}
 		color[u] = "Black"
+		fmt.Printf("%#v\n", color)
 		for _, v := range graph.AdjacencyList[u] {
 			if color[v] == "White" {
 				color[v] = "Gray"
-				queue.dequeue()
+				fmt.Printf("%#v\n", color)
+				queue.enqueue(v)
 			}
-			fmt.Printf("%#v\n", color)
 		}
-		fmt.Printf("end\n%#v\n", color)
 	}
+
+	fmt.Printf("----------end----------\n%#v\n--------------------\n", color)
+	return nil
 }
 
 type AdjacencyList [][]int
@@ -61,23 +64,18 @@ type Undirected struct {
 }
 
 func (p *Undirected) AddEdge(n1, n2 int) {
-	// Similar code in LabeledAdjacencyList.AddEdge.
-
-	// determine max of the two end points
 	max := n1
 	if n2 > max {
 		max = n2
 	}
-	// expand graph if needed, to include both
 	g := p.AdjacencyList
-	if int(max) >= len(g) {
+	if max >= len(g) {
 		p.AdjacencyList = make(AdjacencyList, max+1)
 		copy(p.AdjacencyList, g)
 		g = p.AdjacencyList
 	}
-	// create one half-arc,
+
 	g[n1] = append(g[n1], n2)
-	// and except for loops, create the reciprocal
 	if n1 != n2 {
 		g[n2] = append(g[n2], n1)
 	}
