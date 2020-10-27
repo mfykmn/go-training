@@ -11,8 +11,6 @@
 │ └── string-search       # 文字列探索
 │
 └── data-structure      # データ構造
-  ├── dynamic-structure   # 動的構造
-  └── static-structure    # 静的構造
 ```
 
 # 参考
