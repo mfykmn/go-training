@@ -16,6 +16,6 @@
 # 参考
 - アルゴリズムビジュアル大辞典
   - https://yutaka-watanobe.github.io/star-aida/books/
-  - TODO: 22-2から27章は難しくてスキップ
+  - TODO: 22-2から27章(24章は除く)は難しくてスキップ
 - アルゴリズムをはじめよう
 - https://qiita.com/drken/items/44c60118ab3703f7727f
