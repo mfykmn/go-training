@@ -31,7 +31,7 @@ require (
 	github.com/gorilla/handlers v1.3.0
 	github.com/gorilla/mux v1.6.2
 	github.com/gorilla/schema v0.0.0-20180614150749-e0e4b92809ac // indirect
-	github.com/gorilla/websocket v1.2.0
+	github.com/gorilla/websocket v1.4.1
 	github.com/grpc-ecosystem/go-grpc-middleware v1.2.2
 	github.com/jinzhu/gorm v1.9.1
 	github.com/jinzhu/inflection v0.0.0-20180308033659-04140366298a // indirect
