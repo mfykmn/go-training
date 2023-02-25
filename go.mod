@@ -66,9 +66,8 @@ require (
 	github.com/webx-top/validation v0.0.1 // indirect
 	github.com/ziutek/mymysql v1.5.4 // indirect
 	go.uber.org/zap v1.10.0
-	golang.org/x/crypto v0.0.0-20200820211705-5c72a883971a
-	golang.org/x/net v0.0.0-20200822124328-c89045814202
-	golang.org/x/sys v0.0.0-20200826173525-f9321e4c35a6 // indirect
+	golang.org/x/crypto v0.1.0
+	golang.org/x/net v0.1.0
 	golang.org/x/tour v0.0.0-20180711200808-8ddcbfcc471b
 	google.golang.org/appengine v1.6.6
 	google.golang.org/grpc v1.32.0
